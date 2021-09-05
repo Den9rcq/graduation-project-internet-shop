@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from "./components/Header";
 
 const App = () => {
     return (
         <div>
-          <i className="material-icons large">build</i>
+          <Header/>
         </div>
     );
 };
