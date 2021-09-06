@@ -1,8 +1,12 @@
-import React, {FC, useState} from 'react';
+import React, {useState} from 'react';
 
-const SearchPanel: FC = () => {
-    const [value, setValue] = useState<string>('')
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)
+const SearchPanel = ({onSearch}: {onSearch: (value: string) => void}) => {
+    const [value, setValue] = useState('')
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {value} = e.target
+        setValue(value)
+        onSearch(value.trim().toLowerCase())
+    }
 
     return (
         <div className="row">

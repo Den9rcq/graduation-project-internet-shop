@@ -1,11 +1,26 @@
-import React, {FC} from 'react';
+import React from 'react';
 
-const Sort: FC = () => {
+const Sort = ({onSortProduct}: { onSortProduct: (event: React.MouseEvent<HTMLButtonElement>) => void }) => {
     return (
         <div className='col'>
-            <button className="waves-effect red accent-1 btn-small"><i className="material-icons left">star</i>По поулярности</button>
-            <button className="waves-effect red accent-1 btn-small"><i className="material-icons left">keyboard_double_arrow_down</i>по возростанию</button>
-            <button className="waves-effect red accent-1 btn-small"><i className="material-icons left">keyboard_double_arrow_up</i> по убыванию</button>
+            <button
+                name='popular'
+                onClick={(e) => onSortProduct(e)}
+                className="waves-effect red accent-1 btn-small">
+                <i className="material-icons left">star</i>По популярности
+            </button>
+            <button
+                name='highToLow'
+                onClick={(e) => onSortProduct(e)}
+                className="waves-effect red accent-1 btn-small"><i
+                className="material-icons left">sort</i>по возростанию
+            </button>
+            <button
+                name='lowToHigh'
+                onClick={(e) => onSortProduct(e)}
+                className="waves-effect red accent-1 btn-small"><i
+                className="material-icons left revers-sort">sort</i> по убыванию
+            </button>
         </div>
     );
 };
