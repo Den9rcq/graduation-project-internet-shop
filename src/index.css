@@ -12,10 +12,22 @@ code {
     monospace;
 }
 .App {
-  width: 100vw;
-  height: 100vh;
+
 }
 
+/*  Input color  */
+input:focus {
+  border-bottom: 1px solid #ee6e73 !important;
+  box-shadow: 0 1px 0 0 #ee6e73 !important;
+}
+label.active {
+  color: #ee6e73 !important;
+}
+/*  =============  */
+
+.p-0 {
+  padding: 0;
+}
 .px-1 {
   padding: 0 1rem;
 }
@@ -23,6 +35,31 @@ code {
   padding: 0 2rem;
 }
 
+/*  Search Panel  */
 #searchPanel {
+  box-sizing: border-box;
   padding: 0 1rem;
+}
+
+
+/*  Cards  */
+
+.card .card-content p {
+  font-size: 14px;
+}
+.card.horizontal .card-stacked .card-content {
+  display: flex;
+  flex-direction: column;
+}
+.card.horizontal .card-stacked {
+  flex: 1 0 60%;
+}
+
+.card .card-content .card-content__header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.card .card-content .card-content__content {
+  flex: 1 0 65%;
 }
