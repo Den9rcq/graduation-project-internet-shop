@@ -10,22 +10,13 @@ import {InitialStateType} from "./common/models";
 
 const initialState: InitialStateType[] = [
     {
-        _id: '1',
-        nameOfProduct: 'iPhone 2g',
+        _id: '6',
+        nameOfProduct: 'iPhone 12 mini',
         category: ['phone'],
-        price: 20,
-        img: 'https://podberi-sotik.ru/aimg/content/7961a43edab8020aa12d080795142dfcf62de959.jpg',
-        quantity: 10,
-        popular: 2
-    },
-    {
-        _id: '2',
-        nameOfProduct: 'iPhone 4s',
-        category: ['phone'],
-        price: 40,
-        img: 'https://i2.stat01.com/1/5318/53170918/afacdb/apple-iphone-4s-16gb-chernyj.jpg',
-        quantity: 7,
-        popular: 4
+        price: 120,
+        img: 'https://telefonplus.ru/wp-content/uploads/2020/11/12-mini.jpg',
+        quantity: 15,
+        popular: 15
     },
     {
         _id: '3',
@@ -37,15 +28,6 @@ const initialState: InitialStateType[] = [
         popular: 6
     },
     {
-        _id: '4',
-        nameOfProduct: 'iPhone X',
-        category: ['phone'],
-        price: 80,
-        img: 'https://www.ixbt.com/short/images/2018/Jan/iphonex-spgry-pureangles_gb-en-screen_1.jpg',
-        quantity: 22,
-        popular: 16
-    },
-    {
         _id: '5',
         nameOfProduct: 'iPhone 11',
         category: ['phone'],
@@ -55,14 +37,33 @@ const initialState: InitialStateType[] = [
         popular: 45
     },
     {
-        _id: '6',
-        nameOfProduct: 'iPhone 12 mini',
+        _id: '1',
+        nameOfProduct: 'iPhone 2g',
         category: ['phone'],
-        price: 120,
-        img: 'https://telefonplus.ru/wp-content/uploads/2020/11/12-mini.jpg',
-        quantity: 15,
-        popular: 15
+        price: 20,
+        img: 'https://podberi-sotik.ru/aimg/content/7961a43edab8020aa12d080795142dfcf62de959.jpg',
+        quantity: 10,
+        popular: 2
     },
+    {
+        _id: '4',
+        nameOfProduct: 'iPhone X',
+        category: ['phone'],
+        price: 80,
+        img: 'https://www.ixbt.com/short/images/2018/Jan/iphonex-spgry-pureangles_gb-en-screen_1.jpg',
+        quantity: 22,
+        popular: 16
+    },
+    {
+        _id: '2',
+        nameOfProduct: 'iPhone 4s',
+        category: ['phone'],
+        price: 40,
+        img: 'https://i2.stat01.com/1/5318/53170918/afacdb/apple-iphone-4s-16gb-chernyj.jpg',
+        quantity: 7,
+        popular: 4
+    },
+
     {
         _id: '7',
         nameOfProduct: 'iPhone 12 Pro Max',

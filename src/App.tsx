@@ -18,9 +18,10 @@ const App = ({initialState}: { initialState: InitialStateType[] }) => {
     }
 
     // Сортировка продуктов
-    const sortProducts = (event: any) => {
+    const sortProducts = (event: React.FormEvent<EventTarget>) => {
+        const target = event.target as HTMLButtonElement
         const saveState = [...state]
-        switch (event.target['name']) {
+        switch (target['name']) {
             case 'popular':
                 saveState.sort((a, b) => b.popular - a.popular)
                 setState(saveState)
