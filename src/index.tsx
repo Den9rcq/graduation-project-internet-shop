@@ -13,65 +13,202 @@ const initialState: InitialStateType[] = [
         _id: '6',
         nameOfProduct: 'iPhone 12 mini',
         category: ['phone'],
-        price: 120,
-        img: 'https://telefonplus.ru/wp-content/uploads/2020/11/12-mini.jpg',
+        price: 69990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-mini-select-2021?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;.v=1617130318000',
         quantity: 15,
         popular: 15
-    },
-    {
+    }, {
         _id: '3',
-        nameOfProduct: 'iPhone 7',
+        nameOfProduct: 'iPhone SE',
         category: ['phone'],
-        price: 60,
-        img: 'https://akket.com/wp-content/uploads/2017/06/Apple-iPhone-7-Plus-Russia-Price-3.jpg',
+        price: 39990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-se-family-select-2020?wid=882&hei=1058&fmt=jpeg&qlt=80&.v=1586794486444',
         quantity: 14,
         popular: 6
-    },
-    {
+    }, {
         _id: '5',
         nameOfProduct: 'iPhone 11',
         category: ['phone'],
-        price: 100,
-        img: 'https://shop.mts.ru/upload/iblock/0ab/iPhone_11_P_6.jpg',
+        price: 54990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone11-select-2019-family_GEO_EMEA?wid=882&hei=1058&fmt=jpeg&qlt=80&.v=1567022219953',
         quantity: 12,
         popular: 45
-    },
-    {
+    }, {
         _id: '1',
-        nameOfProduct: 'iPhone 2g',
+        nameOfProduct: 'iPhone XR',
         category: ['phone'],
-        price: 20,
-        img: 'https://podberi-sotik.ru/aimg/content/7961a43edab8020aa12d080795142dfcf62de959.jpg',
+        price: 47990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-xr-select-2019-family?wid=882&hei=1058&fmt=jpeg&qlt=80&.v=1550795424612',
         quantity: 10,
         popular: 2
-    },
-    {
+    }, {
         _id: '4',
-        nameOfProduct: 'iPhone X',
+        nameOfProduct: 'iPhone 12',
         category: ['phone'],
-        price: 80,
-        img: 'https://www.ixbt.com/short/images/2018/Jan/iphonex-spgry-pureangles_gb-en-screen_1.jpg',
+        price: 79990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-select-2021?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;.v=1617130318000',
         quantity: 22,
         popular: 16
-    },
-    {
+    }, {
         _id: '2',
-        nameOfProduct: 'iPhone 4s',
+        nameOfProduct: 'iPhone 12 Pro',
         category: ['phone'],
-        price: 40,
-        img: 'https://i2.stat01.com/1/5318/53170918/afacdb/apple-iphone-4s-16gb-chernyj.jpg',
+        price: 99990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-family-hero-all?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;.v=1604021662000',
         quantity: 7,
         popular: 4
-    },
-
-    {
+    }, {
         _id: '7',
         nameOfProduct: 'iPhone 12 Pro Max',
         category: ['phone'],
-        price: 160,
-        img: 'https://i.ytimg.com/vi/54Fp21DUmrw/maxresdefault.jpg',
+        price: 109990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-max-family-hero-all?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;.v=1604021663000',
         quantity: 31,
         popular: 22
+    }, {
+        _id: '8',
+        nameOfProduct: 'MacBook Air M1',
+        category: ['macbook'],
+        price: 99990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-air-202108?wid=980&hei=1000&fmt=p-jpg&qlt=95&.v=1625871034000',
+        quantity: 10,
+        popular: 2
+    }, {
+        _id: '9',
+        nameOfProduct: 'MacBook Pro 13\'',
+        category: ['macbook'],
+        price: 129990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-pro-13-202108_GEO_RU?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626383418000',
+        quantity: 15,
+        popular: 9
+    }, {
+        _id: '10',
+        nameOfProduct: 'MacBook Pro 16\'',
+        category: ['macbook'],
+        price: 234990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-pro-16-202108_GEO_RU?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626385833000',
+        quantity: 5,
+        popular: 4
+    }, {
+        _id: '11',
+        nameOfProduct: 'iMac 27\'',
+        category: ['mac'],
+        price: 188990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-imac-27-202108?wid=1050&hei=1000&fmt=p-jpg&qlt=95&.v=1626106575000',
+        quantity: 4,
+        popular: 9
+    }, {
+        _id: '12',
+        nameOfProduct: 'Mac mini',
+        category: ['mac'],
+        price: 74990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-mac-mini-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626106830000',
+        quantity: 13,
+        popular: 21
+    }, {
+        _id: '13',
+        nameOfProduct: 'Mac Pro',
+        category: ['mac'],
+        price: 621990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-mac-pro-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1625864628000',
+        quantity: 2,
+        popular: 1
+    }, {
+        _id: '14',
+        nameOfProduct: 'Монитор Pro Display XDR',
+        category: ['display'],
+        price: 379990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-mac-pro-display-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1625864626000',
+        quantity: 2,
+        popular: 1
+    }, {
+        _id: '15',
+        nameOfProduct: 'iPad Pro',
+        category: ['ipad'],
+        price: 79990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-pro-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1627413382000',
+        quantity: 10,
+        popular: 7
+    }, {
+        _id: '16',
+        nameOfProduct: 'iPad Air',
+        category: ['ipad'],
+        price: 55990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-air-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1627413381000',
+        quantity: 15,
+        popular: 9
+    }, {
+        _id: '17',
+        nameOfProduct: 'iPad',
+        category: ['ipad'],
+        price: 29990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-ipad-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1627413381000',
+        quantity: 30,
+        popular: 25
+    }, {
+        _id: '18',
+        nameOfProduct: 'iPad mini',
+        category: ['ipad'],
+        price: 37990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-mini-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1627413381000',
+        quantity: 12,
+        popular: 17
+    }, {
+        _id: '19',
+        nameOfProduct: 'Apple Watch Series 6',
+        category: ['watch'],
+        price: 36990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/watch-card-40-aws6-202108_GEO_RU?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626487486000',
+        quantity: 18,
+        popular: 29
+    }, {
+        _id: '20',
+        nameOfProduct: 'Apple Watch SE',
+        category: ['watch'],
+        price: 24990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/watch-card-40-awse-202108_GEO_IE_GEO_RU?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626487546000',
+        quantity: 54,
+        popular: 42
+    },{
+        _id: '21',
+        nameOfProduct: 'Apple Watch Series 3',
+        category: ['watch'],
+        price: 17990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/watch-card-40-aws3-202108_GEO_RU?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626487412000',
+        quantity: 32,
+        popular: 24
+    },{
+        _id: '22',
+        nameOfProduct: 'AirPods',
+        category: ['headphone'],
+        price: 19900,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-wireless-charge-case-201910?wid=300&hei=390&fmt=png-alpha&.v=1570816694068',
+        quantity: 75,
+        popular: 80
+    },{
+        _id: '23',
+        nameOfProduct: 'AirPods',
+        category: ['headphone'],
+        price: 24900,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MWP22?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1591634795000',
+        quantity: 50,
+        popular: 46
+    },{
+        _id: '24',
+        nameOfProduct: 'AirPods Max',
+        category: ['headphone'],
+        price: 62900,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-max-hero-select-202011?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604709293000',
+        quantity: 10,
+        popular: 16
+    },{
+        _id: '25',
+        nameOfProduct: 'Apple TV 4K',
+        category: ['tv'],
+        price: 16990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-tv-4k-hero-select-202104?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1619139498000',
+        quantity: 10,
+        popular: 25
     },
 
 ]

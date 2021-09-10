@@ -4,6 +4,7 @@ import SearchPanel from "./components/searchPanel";
 import Sort from "./components/sort";
 import CardProducts from "./components/cardProducts";
 import {InitialStateType} from "./common/models";
+import Categories from "./components/categories";
 
 
 const App = ({initialState}: { initialState: InitialStateType[] }) => {
@@ -43,7 +44,7 @@ const App = ({initialState}: { initialState: InitialStateType[] }) => {
             <Header/>
             <SearchPanel onSearch={getResultSearch}/>
             <div className="row">
-                <div className="col s4">Категории</div>
+                <div className="col s4"><Categories/></div>
                 <div className="col s8">
                     <Sort
                         onSortProduct={sortProducts}/>

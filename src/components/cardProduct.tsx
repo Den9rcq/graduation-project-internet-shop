@@ -14,7 +14,7 @@ const CardProduct = ({product}: { product: InitialStateType }) => {
                 <div className="card-content">
                     <p className="card-content__header">{nameOfProduct}</p>
                     <p className='card-content__content'>{`ID Товара: ${_id}`}</p>
-                    <p className='card-content__price'>{`Цена: ${price} $`}</p>
+                    <p className='card-content__price'>{`Цена: ${price}₽`}</p>
                 </div>
                 <div className="card-action">
                     <a href="/">Открыть карточку</a>

@@ -78,3 +78,17 @@ label.active {
 .revers-sort {
   transform: rotateX(180deg);
 }
+
+/*  Collection  */
+.categories {
+  margin: 0;
+}
+.collection a.collection-item {
+  display: block;
+  transition: .25s;
+  color: #ee6e73;
+}
+.collection .collection-item.active {
+  background-color: #ee6e73;
+  color: #eafaf9;
+}
