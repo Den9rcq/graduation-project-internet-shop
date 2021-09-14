@@ -3,11 +3,15 @@ import Header from "./components/Header";
 import SearchPanel from "./components/searchPanel";
 import Sort from "./components/sort";
 import CardProducts from "./components/cardProducts";
-import {InitialStateType} from "./common/models";
+import {InitialStateType, ProductCategoryType} from "./common/models";
 import Categories from "./components/categories";
 
+type AppProps = {
+    initialState: InitialStateType[],
+    productCategory: ProductCategoryType[]
+}
 
-const App = ({initialState}: { initialState: InitialStateType[] }) => {
+const App = ({initialState, productCategory}: AppProps) => {
 
     const [state, setState] = useState<InitialStateType[]>(initialState)
 
@@ -42,14 +46,18 @@ const App = ({initialState}: { initialState: InitialStateType[] }) => {
     return (
         <div className='App'>
             <Header/>
-            <SearchPanel onSearch={getResultSearch}/>
-            <div className="row">
-                <div className="col s4"><Categories/></div>
-                <div className="col s8">
-                    <Sort
-                        onSortProduct={sortProducts}/>
-                    <CardProducts
-                        state={state}/>
+            <div className='container'>
+                <SearchPanel onSearch={getResultSearch}/>
+                <div className="row">
+                    <div className="col s4">
+                        <Categories productCategory={productCategory}/>
+                    </div>
+                    <div className="col s8">
+                        <Sort
+                            onSortProduct={sortProducts}/>
+                        <CardProducts
+                            state={state}/>
+                    </div>
                 </div>
             </div>
         </div>

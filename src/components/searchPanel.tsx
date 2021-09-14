@@ -10,7 +10,7 @@ const SearchPanel = ({onSearch}: {onSearch: (value: string) => void}) => {
 
     return (
         <div className="row">
-            <div className="input-field s12">
+            <div className="input-field s10">
                 <input
                     onChange={changeHandler}
                     value={value}

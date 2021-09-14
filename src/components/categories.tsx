@@ -1,23 +1,16 @@
 import React from 'react';
+import {ProductCategoryType} from "../common/models";
 
-const Categories = () => {
-
-    const addActiveClass = (e: React.MouseEvent) => {
-        console.log(e.target)
-    }
+const Categories = ({productCategory}: { productCategory: ProductCategoryType[] }) => {
 
     return (
         <div className="categories collection">
             <h3 className='center'>Категории</h3>
-            <a href="#!" className="collection-item active">Всё</a>
-            <a href="#!" className="collection-item">Телефоны</a>
-            <a href="#!" className="collection-item">Планшеты</a>
-            <a href="#!" className="collection-item">Ноутбуки</a>
-            <a href="#!" className="collection-item">Компьютеры</a>
-            <a href="#!" className="collection-item">Часы</a>
-            <a href="#!" className="collection-item">Наушники</a>
-            <a href="#!" className="collection-item">ТВ приставки</a>
-            <a href="#!" className="collection-item">Дисплеи</a>
+            <ul className="collection">
+                {productCategory.map(category => <li
+                    key={category._id}
+                    className="collection-item">{category.name}</li>)}
+            </ul>
         </div>
     );
 };

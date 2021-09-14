@@ -83,10 +83,11 @@ label.active {
 .categories {
   margin: 0;
 }
-.collection a.collection-item {
+.collection .collection-item {
   display: block;
   transition: .25s;
   color: #ee6e73;
+  cursor: pointer;
 }
 .collection .collection-item.active {
   background-color: #ee6e73;
