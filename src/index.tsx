@@ -27,6 +27,22 @@ const initialState: InitialStateType[] = [
         quantity: 15,
         popular: 15
     }, {
+        _id: '9',
+        nameOfProduct: 'MacBook Pro 13\'',
+        category: productCategory[2],
+        price: 129990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-pro-13-202108_GEO_RU?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626383418000',
+        quantity: 15,
+        popular: 9
+    }, {
+        _id: '22',
+        nameOfProduct: 'AirPods',
+        category: productCategory[5],
+        price: 19900,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-wireless-charge-case-201910?wid=300&hei=390&fmt=png-alpha&.v=1570816694068',
+        quantity: 75,
+        popular: 80
+    }, {
         _id: '3',
         nameOfProduct: 'iPhone SE',
         category: productCategory[0],
@@ -82,14 +98,6 @@ const initialState: InitialStateType[] = [
         img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-air-202108?wid=980&hei=1000&fmt=p-jpg&qlt=95&.v=1625871034000',
         quantity: 10,
         popular: 2
-    }, {
-        _id: '9',
-        nameOfProduct: 'MacBook Pro 13\'',
-        category: productCategory[2],
-        price: 129990,
-        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-card-40-macbook-pro-13-202108_GEO_RU?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1626383418000',
-        quantity: 15,
-        popular: 9
     }, {
         _id: '10',
         nameOfProduct: 'MacBook Pro 16\'',
@@ -158,8 +166,8 @@ const initialState: InitialStateType[] = [
         _id: '18',
         nameOfProduct: 'iPad mini',
         category: productCategory[1],
-        price: 37990,
-        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-mini-202108?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1627413381000',
+        price: 47990,
+        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-card-40-ipad-mini-202109?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1630457637000',
         quantity: 12,
         popular: 17
     }, {
@@ -187,16 +195,8 @@ const initialState: InitialStateType[] = [
         quantity: 32,
         popular: 24
     }, {
-        _id: '22',
-        nameOfProduct: 'AirPods',
-        category: productCategory[5],
-        price: 19900,
-        img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-wireless-charge-case-201910?wid=300&hei=390&fmt=png-alpha&.v=1570816694068',
-        quantity: 75,
-        popular: 80
-    }, {
         _id: '23',
-        nameOfProduct: 'AirPods',
+        nameOfProduct: 'AirPods Pro',
         category: productCategory[5],
         price: 24900,
         img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MWP22?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1591634795000',

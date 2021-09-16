@@ -14,6 +14,17 @@ type AppProps = {
 const App = ({initialState, productCategory}: AppProps) => {
 
     const [state, setState] = useState<InitialStateType[]>(initialState)
+    const [category, setCategory] = useState<ProductCategoryType[]>(productCategory)
+    const [currentCategory, setCurrentCategory] = useState<string>('')
+
+    // Установка категории
+    const getCurrentCategory = (category: string) => {
+        setCurrentCategory(category)
+    }
+    // Фильтрация по категориям
+    const filteredProduct: InitialStateType[] = currentCategory
+        ? state.filter((product) => product.category.name === currentCategory)
+        : state
 
     // Живая фильтрация продуктов
     const getResultSearch = (value: string) => {
@@ -50,13 +61,15 @@ const App = ({initialState, productCategory}: AppProps) => {
                 <SearchPanel onSearch={getResultSearch}/>
                 <div className="row">
                     <div className="col s4">
-                        <Categories productCategory={productCategory}/>
+                        <Categories
+                            productCategory={category}
+                            getCurrentCategory={getCurrentCategory}/>
                     </div>
                     <div className="col s8">
                         <Sort
                             onSortProduct={sortProducts}/>
                         <CardProducts
-                            state={state}/>
+                            state={filteredProduct}/>
                     </div>
                 </div>
             </div>
