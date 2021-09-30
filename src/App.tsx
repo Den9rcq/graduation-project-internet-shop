@@ -14,7 +14,7 @@ type AppProps = {
 const App = ({initialState, productCategory}: AppProps) => {
 
     const [state, setState] = useState<InitialStateType[]>(initialState)
-    const [category, setCategory] = useState<ProductCategoryType[]>(productCategory)
+    const [category] = useState<ProductCategoryType[]>(productCategory)
     const [currentCategory, setCurrentCategory] = useState<string>('')
 
     // Установка категории
@@ -63,7 +63,8 @@ const App = ({initialState, productCategory}: AppProps) => {
                     <div className="col s4">
                         <Categories
                             productCategory={category}
-                            getCurrentCategory={getCurrentCategory}/>
+                            getCurrentCategory={getCurrentCategory}
+                            currentCategory={currentCategory}/>
                     </div>
                     <div className="col s8">
                         <Sort
