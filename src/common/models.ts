@@ -11,3 +11,8 @@ export type InitialStateType = {
 export type ProductCategoryType = {
     _id: string, name: string
 }
+
+export type DataType = {
+    initialState: InitialStateType[],
+    productCategory: ProductCategoryType[]
+}
