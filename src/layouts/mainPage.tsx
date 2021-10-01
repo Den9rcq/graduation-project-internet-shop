@@ -4,8 +4,9 @@ import SearchPanel from "../components/searchPanel";
 import Categories from "../components/categories";
 import Sort from "../components/sort";
 import CardProducts from "../components/cardProducts";
+import {initialState, productCategory} from "../database";
 
-const MainPage = ({initialState, productCategory}: DataType) => {
+const MainPage = () => {
     const [state, setState] = useState<InitialStateType[]>(initialState)
     const [category] = useState<ProductCategoryType[]>(productCategory)
     const [currentCategory, setCurrentCategory] = useState<string>('')
