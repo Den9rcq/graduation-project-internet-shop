@@ -8,9 +8,10 @@ import SearchPanel from "../components/searchPanel";
 type ProductPageType = {
     state: InitialStateType[],
     onSearch: (value: string) => void,
+    onCurrentCategory: (category: string) => void
 }
 
-const ProductPage = ({state, onSearch}: ProductPageType) => {
+const ProductPage = ({state, onSearch, onCurrentCategory}: ProductPageType) => {
     const {productId} = useParams<{ productId: string }>();
     const currentProduct: InitialStateType | undefined = state.find(product => product._id === productId);
 
@@ -20,7 +21,7 @@ const ProductPage = ({state, onSearch}: ProductPageType) => {
 
                 ? <>
                     <SearchPanel onSearch={onSearch}/>
-                    <Breadcrumbs product={currentProduct}/>
+                    <Breadcrumbs product={currentProduct} onCurrentCategory={onCurrentCategory}/>
                     <CardProduct product={currentProduct}/>
                 </>
                 : <h2>Такого товара нет</h2>}

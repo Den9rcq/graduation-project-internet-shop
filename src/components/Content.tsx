@@ -63,7 +63,11 @@ const Content = () => {
                         filteredProduct={filteredProduct}/>}/>
                 <Route path='/login' component={LoginPage}/>
                 <Route path='/registration' component={RegistrationPage}/>
-                <Route path='/product/:productId' render={() => <ProductPage state={state} onSearch={getResultSearch}/>}/>
+                <Route path='/product/:productId' render={() =>
+                    <ProductPage
+                        state={state}
+                        onSearch={getResultSearch}
+                        onCurrentCategory={getCurrentCategory}/>}/>
                 <Redirect to='/'/>
             </Switch>
         </div>
