@@ -12,13 +12,17 @@ const Breadcrumbs = ({product, onCurrentCategory}: BreadcrumbsType) => {
         <nav>
             <div className="nav-wrapper mt-1 px-1">
                 <ul className="col s12">
-                    <li><Link to='/' className="breadcrumb">Главная</Link></li>
+                    <li onClick={() => onCurrentCategory('')}>
+                        <Link to='/' className="breadcrumb">Главная</Link>
+                    </li>
                     <li onClick={() => onCurrentCategory(product.category.name)}>
                         <Link to='/'
                               className="breadcrumb">{product.category.name}
                         </Link>
                     </li>
-                    <li><Link to={`/product/${product._id}`} className="breadcrumb">{product.nameOfProduct}</Link></li>
+                    <li>
+                        <Link to={`/product/${product._id}`} className="breadcrumb">{product.nameOfProduct}</Link>
+                    </li>
                 </ul>
             </div>
         </nav>
