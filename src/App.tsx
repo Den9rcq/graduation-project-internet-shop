@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "./components/Header";
 import MainPage from "./layouts/mainPage";
+import LoginPage from "./layouts/loginPage";
 
 const App = () => {
 
@@ -8,7 +9,8 @@ const App = () => {
         <div className='App'>
             <Header/>
             <div className='container'>
-                <MainPage/>
+                {/*<MainPage/>*/}
+                <LoginPage/>
             </div>
         </div>
     );
