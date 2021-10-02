@@ -1,25 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useParams} from 'react-router-dom';
 import {InitialStateType} from "../common/models";
-import {initialState} from "../database";
 import CardProduct from "../components/cardProduct";
 import Breadcrumbs from "../components/breadcrumbs";
 import SearchPanel from "../components/searchPanel";
-import {getFilteredProductsByName} from "../utils/getFilteredProductsByName";
 
-const ProductPage = () => {
-    const [state, setState] = useState<InitialStateType[]>(initialState)
+type ProductPageType = {
+    state: InitialStateType[],
+    onSearch: (value: string) => void,
+}
+
+const ProductPage = ({state, onSearch}: ProductPageType) => {
     const {productId} = useParams<{ productId: string }>();
     const currentProduct: InitialStateType | undefined = state.find(product => product._id === productId);
-    const getResultSearch = (value: string) => {
-        setState(getFilteredProductsByName(value, initialState))
-    }
+
     return (
         <>
             {currentProduct
 
                 ? <>
-                    <SearchPanel onSearch={getResultSearch}/>
+                    <SearchPanel onSearch={onSearch}/>
                     <Breadcrumbs product={currentProduct}/>
                     <CardProduct product={currentProduct}/>
                 </>
