@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const LoginPage = () => {
+const RegistrationPage = () => {
     return (
         <div className="row mt-5">
             <form className="col s12">
                 <div className="row">
-                    <h3 className="center-align">Вход</h3>
+                    <h3 className="center-align">Регистрация</h3>
                     <div className="input-field col s6 offset-s3 mt-3">
                         <i className="material-icons prefix">person</i>
                         <input id="first_name" type="text" className="validate"/>
@@ -22,19 +21,13 @@ const LoginPage = () => {
                     <button
                         className="btn waves-effect red accent-1 col s4 offset-s4"
                         type="submit"
-                        name="action">Войти
-                        <i className="material-icons right">login</i>
-                    </button>
-                    <Link
-                        to='/registration'
-                        className="waves-effect red accent-1 btn col s4 offset-s4 mt-1">
+                        name="action">Регистрация
                         <i className="material-icons right">app_registration</i>
-                        Зарегестрироваться
-                    </Link>
+                    </button>
                 </div>
             </form>
         </div>
     );
 };
 
-export default LoginPage;
+export default RegistrationPage;
