@@ -5,6 +5,7 @@ import Categories from "../components/categories";
 import Sort from "../components/sort";
 import CardProductsList from "../components/cardProductsList";
 import {initialState, productCategory} from "../database";
+import {getFilteredProductsByName} from "../utils/getFilteredProductsByName";
 
 const MainPage = () => {
     const [state, setState] = useState<InitialStateType[]>(initialState)
@@ -22,9 +23,7 @@ const MainPage = () => {
 
     // Фильтрация продуктов по имени
     const getResultSearch = (value: string) => {
-        const saveState = [...initialState]
-        const filterState = saveState.filter(s => s.nameOfProduct.toLowerCase().includes(value))
-        setState(filterState)
+        setState(getFilteredProductsByName(value, initialState))
     }
 
     // Сортировка продуктов
