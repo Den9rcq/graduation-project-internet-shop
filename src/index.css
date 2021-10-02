@@ -97,6 +97,21 @@ label.active {
   transform: rotateX(180deg);
 }
 
+.card.card-product .card-image img {
+  display: block;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 30%;
+}
+.card.card-product .card-stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /*  Collection  */
 .categories {
   margin: 0;

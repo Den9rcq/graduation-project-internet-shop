@@ -20,7 +20,7 @@ const MainPage = () => {
         ? state.filter((product) => product.category.name === currentCategory)
         : state
 
-    // Живая фильтрация продуктов
+    // Фильтрация продуктов по имени
     const getResultSearch = (value: string) => {
         const saveState = [...initialState]
         const filterState = saveState.filter(s => s.nameOfProduct.toLowerCase().includes(value))

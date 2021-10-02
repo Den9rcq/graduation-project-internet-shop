@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {InitialStateType} from "../common/models";
 import {initialState} from "../database";
 import CardProduct from "../components/cardProduct";
+import Breadcrumbs from "../components/breadcrumbs";
 
 const ProductPage = () => {
     const [state] = useState<InitialStateType[]>(initialState)
@@ -13,15 +14,7 @@ const ProductPage = () => {
             {currentProduct
 
                 ? <>
-                    <nav>
-                        <div className="nav-wrapper">
-                            <div className="col s12">
-                                <Link to='/' className="breadcrumb">Главная</Link>
-                                <Link to='/' className="breadcrumb">{currentProduct.category.name}</Link>
-                                <Link to={`/product/${currentProduct._id}`} className="breadcrumb">{currentProduct.nameOfProduct}</Link>
-                            </div>
-                        </div>
-                    </nav>
+                    <Breadcrumbs product={currentProduct}/>
                     <CardProduct product={currentProduct}/>
                 </>
                 : <h2>Такого товара нет</h2>}

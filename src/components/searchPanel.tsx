@@ -1,18 +1,28 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
-const SearchPanel = ({onSearch}: {onSearch: (value: string) => void}) => {
+const SearchPanel = ({onSearch}: { onSearch: (value: string) => void }) => {
     const [value, setValue] = useState('')
+    const history = useHistory();
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target
         setValue(value)
-        onSearch(value.trim().toLowerCase())
+        if (!value) onSearch(value.trim().toLowerCase())
+    }
+    const keyHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            onSearch(value.trim().toLowerCase())
+            history.push('/')
+            setValue('')
+        }
     }
 
     return (
-        <div className="row">
+        <div className="row mt-2">
             <div className="input-field s10">
                 <input
                     onChange={changeHandler}
+                    onKeyDown={keyHandler}
                     value={value}
                     id="searchPanel"
                     type="text"

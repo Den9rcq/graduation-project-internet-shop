@@ -1,10 +1,9 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import {InitialStateType} from "../common/models";
 
 const CardProduct = ({product}: {product: InitialStateType}) => {
     return (
-        <div key={product._id} className="card horizontal">
+        <div key={product._id} className="card card-product">
             <div className="card-image">
                 <img alt=''
                      src={product.img}/>
@@ -12,11 +11,16 @@ const CardProduct = ({product}: {product: InitialStateType}) => {
             <div className="card-stacked">
                 <div className="card-content">
                     <p className="card-content__header">{product.nameOfProduct}</p>
-                    <p className='card-content__content'>{`ID Товара: ${product._id}`}</p>
-                    <p className='card-content__price'>{`Цена: ${product.price}₽`}</p>
+                    <div className='card-content__content'>
+                        <p className="card-content__content_quantity">{`Количество: ${product.quantity}`}</p>
+                        <p className="card-content__content_price">{`ID Товара: ${product._id}`}</p>
+                    </div>
+                    <p className="card-content__price">{`Цена: ${product.price}₽`}</p>
                 </div>
                 <div className="card-action">
-                    <Link to={`/product/${product._id}`}>Открыть карточку</Link>
+                    <button className="waves-effect waves-light red accent-1 btn">
+                        Купить
+                    </button>
                 </div>
             </div>
         </div>
