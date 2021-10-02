@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {DataType, InitialStateType, ProductCategoryType} from '../common/models';
+import {InitialStateType, ProductCategoryType} from '../common/models';
 import SearchPanel from "../components/searchPanel";
 import Categories from "../components/categories";
 import Sort from "../components/sort";
-import CardProducts from "../components/cardProducts";
+import CardProductsList from "../components/cardProductsList";
 import {initialState, productCategory} from "../database";
 
 const MainPage = () => {
@@ -62,7 +62,7 @@ const MainPage = () => {
                 <div className="col s8">
                     <Sort
                         onSortProduct={sortProducts}/>
-                    <CardProducts
+                    <CardProductsList
                         state={filteredProduct}/>
                 </div>
             </div>
