@@ -20,9 +20,9 @@ const ProductPage = ({state, onSearch, onCurrentCategory}: ProductPageType) => {
             {currentProduct
 
                 ? <>
-                    <SearchPanel onSearch={onSearch}/>
-                    <Breadcrumbs product={currentProduct} onCurrentCategory={onCurrentCategory}/>
-                    <CardProduct product={currentProduct}/>
+                    <SearchPanel onSearch={onSearch} />
+                    <Breadcrumbs product={currentProduct} onCurrentCategory={onCurrentCategory} />
+                    <CardProduct product={currentProduct} />
                 </>
                 : <h2>Такого товара нет</h2>}
         </>
