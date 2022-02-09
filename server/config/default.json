@@ -1,4 +1,6 @@
 {
   "port": 8080,
-  "mongoUri": "mongodb+srv://Den9rcq:1234Qwer@cluster0.bced1.mongodb.net/gp-is?retryWrites=true&w=majority"
+  "mongoUri": "mongodb+srv://Den9rcq:1234Qwer@cluster0.bced1.mongodb.net/gp-is?retryWrites=true&w=majority",
+  "accessSecret": "excellent secret access key ggwp",
+  "refreshSecret": "beautiful secret refresh tkn lol"
 }
