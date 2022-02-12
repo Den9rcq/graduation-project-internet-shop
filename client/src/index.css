@@ -92,6 +92,11 @@ label.active {
     flex-direction: column;
 }
 
+/* Active Link */
+nav ul li a.active {
+    background-color: rgba(0,0,0,0.1);
+}
+
 /*  Search Panel  */
 #searchPanel {
     box-sizing: border-box;

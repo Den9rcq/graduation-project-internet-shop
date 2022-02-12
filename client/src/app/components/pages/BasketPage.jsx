@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchPanel from "../components/common/SearchPanel";
-import ProductCardBasket from "../components/common/ProductCardBasket";
-import OrderTotal from "../components/common/OrderTotal";
+import SearchPanel from "../common/SearchPanel";
+import ProductCardBasket from "../common/ProductCardBasket";
+import OrderTotal from "../common/OrderTotal";
 
 const BasketPage = () => {
     return (

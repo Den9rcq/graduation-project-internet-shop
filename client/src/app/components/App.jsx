@@ -1,19 +1,24 @@
-import Main from "../layouts/Main";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import { BasketPage, LoginPage, MainPage, ProductPage, RegistrationPage } from "./pages";
 import NavBar from "./common/NavBar";
-import ProductPage from "../layouts/ProductPage";
-import BasketPage from "../layouts/BasketPage";
-import Login from "../layouts/login";
 
 function App() {
     return (
-        <>
-            <NavBar />
-            {/*<Main />*/}
-            {/*<ProductPage />*/}
-            {/*<BasketPage />*/}
-            <Login />
-        </>
-    );
+        <Router>
+            <>
+                <NavBar />
+                <Switch>
+                    <Route path="/" exact component={MainPage} />
+                    <Route path="/product/:productId" component={ProductPage} />
+                    <Route path="/basket/:userId" component={BasketPage} />
+                    <Route path="/login" component={LoginPage} />
+                    <Route path="/registration" component={RegistrationPage}/>
+                    <Redirect to='/' />
+                </Switch>
+            </>
+        </Router>
+    )
+        ;
 }
 
 export default App;

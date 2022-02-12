@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 
 const ProductCardMain = () => {
@@ -15,7 +16,7 @@ const ProductCardMain = () => {
                     <p className='card-content__price'>{`Цена: ₽`}</p>
                 </div>
                 <div className="card-action">
-                    <a href={`/product/`}>Открыть карточку</a>
+                    <Link to={`/product/id`}>Открыть карточку</Link>
                 </div>
             </div>
         </div>
