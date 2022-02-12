@@ -5,6 +5,7 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    phone: Number,
     email: {
         type: String,
         required: true,
@@ -16,10 +17,9 @@ const schema = new Schema({
     },
     admin: Boolean,
     image: String,
-    phone: Number,
     sex: {
         type: String,
-        enum: ['male', 'female']
+        enum: ['male', 'female', 'other']
     },
     cart: [{
         type: Schema.Types.ObjectId,
