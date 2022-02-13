@@ -20,7 +20,7 @@ router
             res.status(201).send(newProduct)
         } catch (e) {
             res.status(500).json({
-                message: `На сервере произошла ошибка ${e}`
+                message: `На сервере произошла ошибка ${e.message}`
             })
         }
     })

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchPanel from "../common/SearchPanel";
 import CategoryPanel from "../common/CategoryPanel";
 import SortProducts from "../common/SortProducts";
