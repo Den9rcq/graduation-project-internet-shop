@@ -1,10 +1,11 @@
-import LoginForm from "../common/LoginForm";
+import LoginForm from "../ui/LoginForm";
 import { Link } from "react-router-dom";
 import React from "react";
 
 const LoginPage = () => {
     return (
         <div className="row container mt-3">
+            <h3 className="center-align mb-3">Log In</h3>
             <LoginForm />
             <div className="center-align">
                 <Link

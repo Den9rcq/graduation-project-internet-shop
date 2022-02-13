@@ -3,7 +3,6 @@ import React from 'react';
 const RegisterForm = () => {
     return (
         <form className="col l8  offset-l2">
-            <p className="flow-text center-align mb-3"><h3>Registration</h3></p>
             <div className="row">
                 <div className="input-field col l6">
                     <i className="material-icons prefix">account_circle</i>

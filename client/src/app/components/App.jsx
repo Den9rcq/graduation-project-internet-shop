@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import { BasketPage, LoginPage, MainPage, ProductPage, RegistrationPage } from "./pages";
-import NavBar from "./common/NavBar";
+import NavBar from "./ui/NavBar";
 
 function App() {
     return (

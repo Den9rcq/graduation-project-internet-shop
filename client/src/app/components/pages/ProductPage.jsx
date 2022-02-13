@@ -1,7 +1,7 @@
 import React from 'react';
-import Breadcrumbs from "../common/Breadcrumbs";
-import SearchPanel from "../common/SearchPanel";
-import ProductCard from "../common/ProductCard";
+import Breadcrumbs from "../ui/Breadcrumbs";
+import SearchPanel from "../ui/SearchPanel";
+import ProductCard from "../ui/ProductCard";
 
 const ProductPage = () => {
     return (

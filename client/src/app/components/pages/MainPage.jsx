@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import SearchPanel from "../common/SearchPanel";
-import CategoryPanel from "../common/CategoryPanel";
-import SortProducts from "../common/SortProducts";
-import ProductCardList from "../common/ProductCardList";
+import SearchPanel from "../ui/SearchPanel";
+import CategoryPanel from "../ui/CategoryPanel";
+import SortProducts from "../ui/SortProducts";
+import ProductCardList from "../ui/ProductCardList";
 import categoryService from "../../services/category.service";
 
 const MainPage = () => {
