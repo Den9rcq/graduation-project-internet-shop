@@ -10,7 +10,7 @@ const TextInput = ({ label, icon, ...props }) => {
             {
                 props.as === "textarea"
                     ? <textarea {...props} {...field} />
-                    : <input className="validate" {...props} {...field} />
+                    : <input {...props} {...field} />
             }
             {meta.touched && meta.error && <span className="helper-text" data-error={meta.error}>{meta.error}</span>}
         </>

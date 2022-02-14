@@ -3,23 +3,26 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextInput from "../common/formField/TextInput";
 
-
 const LoginForm = () => {
     const fields = {
         email: '',
         password: ''
     }
 
-    const SignupSchema = Yup.object().shape({
+    const LoginSchema = Yup.object().shape({
         email: Yup.string()
                   .email('Неправильный email')
                   .required('Обязательное поле'),
         password: Yup.string()
-                     .required('Required')
+                     .required('Обязательное поле')
+                     .min(8, 'Пароль должен содержать минимум 8 символов')
+                     .matches(RegExp('(.*[a-z].*)'), 'Пароль должен содержать хотя бы один символ в нижнем регистре')
+                     .matches(RegExp('(.*[A-Z].*)'), 'Пароль должен содержать хотя бы один символ в верхнем регистре')
+                     .matches(RegExp('(.*\\d.*)'), 'Пароль должен содержать хотя бы одну цифру')
     });
 
     const handleSubmit = (values, { setSubmitting, resetForm }) => {
-        console.log(JSON.stringify(values, null, 2))
+        console.log(values)
         resetForm()
         setSubmitting(false)
     }
@@ -27,7 +30,7 @@ const LoginForm = () => {
     return (
         <Formik
             initialValues={fields}
-            validationSchema={SignupSchema}
+            validationSchema={LoginSchema}
             onSubmit={handleSubmit}
         >{({ isValid, dirty, isSubmitting }) => (
             <Form className="col l12">
