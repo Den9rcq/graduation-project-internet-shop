@@ -6,7 +6,7 @@ const categoriesAdapter = createEntityAdapter({
 });
 const initialState = categoriesAdapter.getInitialState({
     activeCategory: { name: 'all' },
-    categoriesLoadingStatus: 'idle'
+    categoriesLoadingStatus: 'loading'
 })
 
 const categoriesSlice = createSlice({
@@ -46,5 +46,8 @@ export const { selectAll: getCategories, selectById } = categoriesAdapter.getSel
 
 export const getCategoryById = (id) => (state) => selectById(state, id)
 export const getCurrentCategory = () => (state) => state.categories.activeCategory
+
+export const getCategoriesLoadingStatus = (state) => state.categories.categoriesLoadingStatus
+
 
 export default reducer

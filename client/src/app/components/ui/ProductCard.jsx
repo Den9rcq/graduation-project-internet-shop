@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from "react-router-dom";
-import productService from "../../services/product.service";
+import { useSelector } from "react-redux";
+import { getProductById } from "../../store/productsSlice";
 
 const ProductCard = () => {
-    const [product, setProduct] = useState(null)
     const { productId } = useParams()
-
-    useEffect(() => {
-        productService.getProduct(productId).then(res => setProduct(res))
-    }, [productId])
+    const product = useSelector(getProductById(productId))
+    const { name, img, _id, quantity, price } = product
 
     if (!product) {
         return "Loading"
     }
-
-    const { name, img, _id, quantity, price } = product
     return (
         <div className="card card-product">
             <div className="card-image">

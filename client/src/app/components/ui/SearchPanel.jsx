@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { searchStringChanged } from "../../store/productsSlice";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getSearchString, searchStringChanged } from "../../store/productsSlice";
 
 const SearchPanel = () => {
     const [value, setValue] = useState('')
+    const searchString = useSelector(getSearchString)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (searchString) {
+            setValue(searchString)
+        }
+
+        // eslint-disable-next-line
+    }, [])
 
     const onChangeHandler = (e) => {
         const { value } = e.target

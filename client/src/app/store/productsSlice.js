@@ -6,7 +6,7 @@ const productsAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.rate - a.rate
 })
 const initialState = productsAdapter.getInitialState({
-    productsLoadingStatus: 'idle',
+    productsLoadingStatus: 'loading',
     sortStatus: 'popular',
     searchString: ''
 })
@@ -63,5 +63,6 @@ export const getFilteredProducts = createSelector(
 export const getProductById = (id) => (state) => selectById(state, id)
 export const getSortStatus = (state) => state.products.sortStatus
 export const getSearchString = (state) => state.products.searchString
+export const getProductLoadingStatus = (state) => state.products.productsLoadingStatus
 
 export default reducer
