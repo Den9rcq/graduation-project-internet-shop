@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import categoryService from "../../services/category.service";
+import React, { useEffect } from 'react';
 import Category from "./Category";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories, getCategories } from "../../store/categoriesSlice";
 
-const CategoryPanel = ({categories, currentCategory, handleClick}) => {
+const CategoryPanel = () => {
+    const categories = useSelector(getCategories)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchCategories())
+    }, [])
 
     return (
         <div className="categories collection">
             <h3 className='center'>Категории</h3>
             <ul className="collection">
-                <li className={`collection-item ${currentCategory === 'all' ? 'active' : null}`}
-                    onClick={() => handleClick('all')}>
-                    Все категории
-                </li>
                 {categories.map(category => <Category
                     key={category._id}
-                    {...category}
-                    currentCategory={currentCategory}
-                    handleClick={handleClick} />)}
+                    {...category} />)}
             </ul>
         </div>
     )

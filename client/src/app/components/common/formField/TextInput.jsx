@@ -12,7 +12,7 @@ const TextInput = ({ label, icon, ...props }) => {
                     ? <textarea {...props} {...field} />
                     : <input {...props} {...field} />
             }
-            {meta.touched && meta.error && <span className="helper-text" data-error={meta.error}>{meta.error}</span>}
+            {meta.touched && meta.error ? <span className="helper-text" data-error={meta.error}>{meta.error}</span> : null}
         </>
     );
 };
