@@ -8,7 +8,7 @@ const ProductCard = () => {
 
     useEffect(() => {
         productService.getProduct(productId).then(res => setProduct(res))
-    }, [])
+    }, [productId])
 
     if (!product) {
         return "Loading"

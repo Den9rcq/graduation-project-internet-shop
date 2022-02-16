@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextInput from "../common/formField/TextInput";
@@ -35,12 +35,12 @@ const LoginForm = () => {
         >{({ isValid, dirty, isSubmitting }) => (
             <Form className="col l12">
                 <div className="row">
-                    <div className="input-field col l8 offset-l2">
+                    <div className="input-field col l6 offset-l3">
                         <TextInput label="Ваша почта" icon="email" name="email" type="email" />
                     </div>
                 </div>
                 <div className="row">
-                    <div className="input-field col l8 offset-l2">
+                    <div className="input-field col l6 offset-l3">
                         <TextInput label="Ваш пароль" icon="password" name="password" type="password" />
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 import categoryService from "../services/category.service";
 
 const categoriesAdapter = createEntityAdapter({
@@ -42,8 +42,9 @@ export const fetchCategories = createAsyncThunk(
     () => categoryService.fetchAll()
 )
 
-export const { selectAll: getCategories } = categoriesAdapter.getSelectors(state => state.categories)
+export const { selectAll: getCategories, selectById } = categoriesAdapter.getSelectors(state => state.categories)
 
+export const getCategoryById = (id) => (state) => selectById(state, id)
 export const getCurrentCategory = () => (state) => state.categories.activeCategory
 
 export default reducer

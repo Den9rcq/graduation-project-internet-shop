@@ -9,6 +9,8 @@ const CategoryPanel = () => {
 
     useEffect(() => {
         dispatch(fetchCategories())
+
+        // eslint-disable-next-line
     }, [])
 
     return (

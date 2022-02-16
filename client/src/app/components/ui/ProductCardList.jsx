@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import productService from "../../services/product.service";
+import React, { useEffect } from 'react';
 import ProductCardMain from "./ProductCardMain";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, getFilteredProducts, getSearchString, getSortStatus } from "../../store/productsSlice";
+import { productSorting } from "../../utils/productSorting";
 
-const ProductCardList = ({ currentCategory }) => {
-    const [products, setProducts] = useState([])
+const ProductCardList = () => {
+    const products = useSelector(getFilteredProducts)
+    const sortStatus = useSelector(getSortStatus)
+    const searchString = useSelector(getSearchString)
+    const dispatch = useDispatch()
+
     useEffect(() => {
-        productService.fetchAll().then(res => setProducts(res))
+        dispatch(fetchProducts())
+
+        // eslint-disable-next-line
     }, [])
 
-    const sortedProduct = currentCategory !== 'all' ? [...products].filter(product => product.category === currentCategory) : [...products]
+
+    const sortedProducts = productSorting(products, sortStatus)
+    const foundProducts = sortedProducts.filter(product => product.name.toLowerCase().trim().includes(searchString))
     return (
         <>
-            {sortedProduct.map(product => <ProductCardMain key={product._id} {...product} />)}
+            {foundProducts.map(product => <ProductCardMain key={product._id} {...product} />)}
         </>
     );
 };
