@@ -3,40 +3,10 @@ import { Form, Formik } from 'formik'
 import TextInput from "../common/formField/TextInput";
 import Select from "../common/formField/Select";
 import Checkbox from "../common/formField/Checkbox";
-import * as Yup from "yup"
-import "yup-phone";
+import { registerFields, SignupSchema } from "../../helpers/form.helpers";
 
 
 const RegisterForm = () => {
-    const fields = {
-        name: '',
-        phone: '',
-        email: '',
-        password: '',
-        sex: '',
-        admin: false
-    }
-
-
-    const SignupSchema = Yup.object({
-        name: Yup.string()
-                 .required('Обязательное поле для заполнения')
-                 .min(2, 'Не менее двух символов'),
-        phone: Yup.string()
-                  .required('Номер телефона обязателен')
-                  .phone('+7', false, 'Введите корректный номер телефона +7'),
-        email: Yup.string()
-                  .required('Обязательное поле для заполнения')
-                  .email('Неправильно введён email'),
-        password: Yup.string()
-                     .required('Обязательное поле')
-                     .min(8, 'Пароль должен содержать минимум 8 символов')
-                     .matches(RegExp('(.*[a-z].*)'), 'Пароль должен содержать хотя бы один символ в нижнем регистре')
-                     .matches(RegExp('(.*[A-Z].*)'), 'Пароль должен содержать хотя бы один символ в верхнем регистре')
-                     .matches(RegExp('(.*\\d.*)'), 'Пароль должен содержать хотя бы одну цифру'),
-        sex: Yup.string().required('Обязательно укажите пол')
-    })
-
     const handleSubmit = (values, { setSubmitting, resetForm }) => {
         console.log(values)
         resetForm()
@@ -44,7 +14,7 @@ const RegisterForm = () => {
     }
     return (
         <Formik
-            initialValues={fields}
+            initialValues={registerFields}
             validationSchema={SignupSchema}
             onSubmit={handleSubmit}
         >
@@ -55,7 +25,6 @@ const RegisterForm = () => {
                             <TextInput label="Введите ваше имя"
                                        className="validate"
                                        icon="account_circle"
-                                       id="name"
                                        name="name"
                                        type="text" />
                         </div>
@@ -63,7 +32,6 @@ const RegisterForm = () => {
                             <TextInput label="Номер телефона"
                                        className="validate"
                                        icon="phone"
-                                       id="phone"
                                        name="phone"
                                        type="tel" />
                         </div>
@@ -79,7 +47,7 @@ const RegisterForm = () => {
                     </div>
                     <div className="row">
                         <div className="input-field col l6">
-                            <Select className="browser-default" name="sex" id="sex">
+                            <Select className="browser-default" name="sex">
                                 <option value="" disabled>Выберите пол</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
