@@ -85,16 +85,22 @@ label.active {
     margin-bottom: 5rem;
 }
 
+/* Flex */
 .flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+.flex-evenly {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
 /* Active Link */
 nav ul li a.active {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*  Search Panel  */
@@ -196,14 +202,12 @@ nav ul li a.active {
 }
 
 
-.card.order .card-stacked .card-content{
+.card.order .card-stacked .card-content {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
     justify-content: space-between;
 }
-
-
 
 
 /*  Collection  */

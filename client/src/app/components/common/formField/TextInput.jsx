@@ -6,7 +6,7 @@ const TextInput = ({ label, icon, ...props }) => {
     return (
         <>
             <i className="material-icons prefix">{icon}</i>
-            <label>{label}</label>
+            {!field.value && <label>{label}</label>}
             {
                 props.as === "textarea"
                     ? <textarea {...props} {...field} />

@@ -12,6 +12,14 @@ const NavBar = () => {
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li>
                         <NavLink
+                            to="/admin-panel"
+                            activeClassName="active"
+                        >
+                            <i className="large material-icons">admin_panel_settings</i>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
                             to="/basket/userId"
                             activeClassName="active">
                             <i className="large material-icons">shopping_cart</i>

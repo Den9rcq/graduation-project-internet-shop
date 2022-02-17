@@ -8,7 +8,8 @@ const productsAdapter = createEntityAdapter({
 const initialState = productsAdapter.getInitialState({
     productsLoadingStatus: 'loading',
     sortStatus: 'popular',
-    searchString: ''
+    searchString: '',
+    selectedProduct: null
 })
 
 const productsSlice = createSlice({
@@ -20,6 +21,9 @@ const productsSlice = createSlice({
         },
         searchStringChanged: (state, action) => {
             state.searchString = action.payload
+        },
+        selectedProductInstalled: (state, action) => {
+            state.selectedProduct = action.payload
         }
     },
     extraReducers: builder => {
@@ -38,7 +42,7 @@ const productsSlice = createSlice({
 })
 
 const { reducer, actions } = productsSlice
-export const { sortStatusChanged, searchStringChanged } = actions
+export const { sortStatusChanged, searchStringChanged, selectedProductInstalled } = actions
 
 export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
@@ -64,5 +68,6 @@ export const getProductById = (id) => (state) => selectById(state, id)
 export const getSortStatus = (state) => state.products.sortStatus
 export const getSearchString = (state) => state.products.searchString
 export const getProductLoadingStatus = (state) => state.products.productsLoadingStatus
+export const getSelectedProduct = (state) => state.products.selectedProduct
 
 export default reducer
