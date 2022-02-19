@@ -10,6 +10,8 @@ const LogoutPage = () => {
     useEffect(() => {
         dispatch(logOut())
         history.push("/");
+
+        // eslint-disable-next-line
     },[])
 
     return (

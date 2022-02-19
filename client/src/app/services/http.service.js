@@ -15,7 +15,7 @@ http.interceptors.request.use(
 
         if (isExpired) {
             const data = await authService.refresh();
-            await localStorageService.setTokens(data);
+            localStorageService.setTokens(data);
         }
         const accessToken = localStorageService.getAccessToken();
         if (accessToken) {
@@ -33,7 +33,9 @@ http.interceptors.request.use(
 
 const httpService = {
     get: http.get,
-    post: http.post
+    post: http.post,
+    patch: http.patch,
+    delete: http.delete
 };
 
 export default httpService

@@ -13,6 +13,15 @@ const productService = {
     create: async (payload) => {
         const { data } = await httpService.post(productEndpoint, payload)
         return data
+    },
+    update: async ({ _id, ...payload }) => {
+        const { data } = await httpService.patch(productEndpoint + _id, payload)
+        return data
+    },
+    delete: async (id) => {
+        const { data } = await httpService.delete(productEndpoint + id)
+        console.log(data)
+        return data
     }
 }
 

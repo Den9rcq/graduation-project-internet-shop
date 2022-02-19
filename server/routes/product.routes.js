@@ -24,19 +24,47 @@ router
             })
         }
     })
-
-router.get('/:productId', async (req, res) => {
-    try {
-        const { productId } = req.params
-        if (productId) {
-            const product = await Product.findById(productId)
-            res.send(product)
+router
+    .route('/:productId')
+    .get(async (req, res) => {
+        try {
+            const { productId } = req.params
+            if (productId) {
+                const product = await Product.findById(productId)
+                res.send(product)
+            }
+        } catch (e) {
+            res.status(500).json({
+                message: `На сервере произошла ошибка: ${e}`
+            })
         }
-    } catch (e) {
-        res.status(500).json({
-            message: `На сервере произошла ошибка: ${e}`
-        })
-    }
-})
+    })
+    .delete(async (req, res) => {
+        try {
+            const { productId } = req.params
+            if (productId) {
+                await Product.findByIdAndDelete(productId)
+                res.send(productId)
+            }
+
+        } catch (e) {
+            res.status(500).json({
+                message: `На сервере произошла ошибка: ${e}`
+            })
+        }
+    })
+    .patch(async (req, res) => {
+        try {
+            const {productId} = req.params
+            if (productId) {
+                const updateProduct = await Product.findByIdAndUpdate(productId, req.body, {new: true})
+                res.send(updateProduct)
+            }
+        } catch (e) {
+            res.status(500).json({
+                message: `На сервере произошла ошибка: ${e}`
+            })
+        }
+    })
 
 module.exports = router

@@ -18,6 +18,23 @@ export const fetchProducts = createAsyncThunk(
     () => productService.fetchAll()
 )
 
+export const createProduct = createAsyncThunk(
+    'products/createProduct',
+    (payload) => productService.create(payload)
+)
+
+export const updateProduct = createAsyncThunk(
+    'product/updateProduct',
+    (payload) => productService.update(payload)
+)
+
+export const removeProduct = createAsyncThunk(
+    'products/removeProduct',
+    (id) => productService.delete(id)
+)
+
+
+
 const productsSlice = createSlice({
     name: 'products',
     initialState,
@@ -33,6 +50,7 @@ const productsSlice = createSlice({
         }
     },
     extraReducers: builder => {
+        // Get products
         builder
             .addCase(fetchProducts.pending, state => {
                 state.productsLoadingStatus = 'loading'
@@ -42,6 +60,44 @@ const productsSlice = createSlice({
                 state.productsLoadingStatus = 'idle'
             })
             .addCase(fetchProducts.rejected, state => {
+                state.productsLoadingStatus = 'error'
+            })
+
+        // Create product
+        builder
+            .addCase(createProduct.pending, state => {
+                state.productLoadingStatus = 'loading'
+            })
+            .addCase(createProduct.fulfilled, (state, action) => {
+                productsAdapter.setOne(state, action.payload)
+                state.productsLoadingStatus = 'idle'
+            })
+            .addCase(createProduct.rejected, state => {
+                state.productsLoadingStatus = 'error'
+            })
+
+        // Update product
+        builder
+            .addCase(updateProduct.pending, state => {
+                state.productLoadingStatus = 'loading'
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                productsAdapter.setOne(state, action.payload)
+                state.productsLoadingStatus = 'idle'
+            })
+            .addCase(updateProduct.rejected, state => {
+                state.productsLoadingStatus = 'error'
+            })
+
+        // Delete product
+        builder
+            .addCase(removeProduct.pending, state => {
+                state.productLoadingStatus = 'loading'
+            })
+            .addCase(removeProduct.fulfilled, (state, action) => {
+                productsAdapter.removeOne(state, action.payload)
+            })
+            .addCase(removeProduct.rejected, state => {
                 state.productsLoadingStatus = 'error'
             })
     }

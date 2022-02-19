@@ -4,7 +4,13 @@ import TextInput from "../common/formField/TextInput";
 import Select from "../common/formField/Select";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../store/categoriesSlice";
-import { getProductById, getSelectedProduct, selectedProductInstalled } from "../../store/productsSlice";
+import {
+    createProduct,
+    getProductById,
+    getSelectedProduct,
+    selectedProductInstalled,
+    updateProduct
+} from "../../store/productsSlice";
 import { AddingOrChangingSchema, adminFields } from "../../helpers/form.helpers";
 
 const AdminForm = () => {
@@ -19,14 +25,15 @@ const AdminForm = () => {
             product = !values.img
                 ? { ...values, img: 'https://zenit.by/images/no_photo.png' }
                 : values
-            console.log(product)
+            // Добавить рейт
+            dispatch(createProduct(product))
             resetForm()
             setSubmitting(false)
         } else {
             product = !values.img
                 ? { ...values, img: 'https://zenit.by/images/no_photo.png', _id: variableProduct._id }
                 : {...values, _id: variableProduct._id}
-            console.log(product)
+            dispatch(updateProduct(product))
             dispatch(selectedProductInstalled(null))
             setSubmitting(false)
         }
