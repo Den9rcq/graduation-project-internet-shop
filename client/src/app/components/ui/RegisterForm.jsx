@@ -4,11 +4,14 @@ import TextInput from "../common/formField/TextInput";
 import Select from "../common/formField/Select";
 import Checkbox from "../common/formField/Checkbox";
 import { registerFields, SignupSchema } from "../../helpers/form.helpers";
-
+import { useDispatch } from "react-redux";
+import { signUpAuth } from "../../store/authSlice";
 
 const RegisterForm = () => {
-    const handleSubmit = (values, { setSubmitting, resetForm }) => {
-        console.log(values)
+    const dispatch = useDispatch()
+
+    const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+        dispatch(signUpAuth(values))
         resetForm()
         setSubmitting(false)
     }

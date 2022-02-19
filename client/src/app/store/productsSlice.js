@@ -5,12 +5,18 @@ const productsAdapter = createEntityAdapter({
     selectId: product => product._id,
     sortComparer: (a, b) => b.rate - a.rate
 })
+
 const initialState = productsAdapter.getInitialState({
     productsLoadingStatus: 'loading',
     sortStatus: 'popular',
     searchString: '',
     selectedProduct: null
 })
+
+export const fetchProducts = createAsyncThunk(
+    'products/fetchProducts',
+    () => productService.fetchAll()
+)
 
 const productsSlice = createSlice({
     name: 'products',
@@ -44,15 +50,7 @@ const productsSlice = createSlice({
 const { reducer, actions } = productsSlice
 export const { sortStatusChanged, searchStringChanged, selectedProductInstalled } = actions
 
-export const fetchProducts = createAsyncThunk(
-    'products/fetchProducts',
-    () => productService.fetchAll()
-)
-
-export const {
-    selectAll: getProducts,
-    selectById
-} = productsAdapter.getSelectors(state => state.products)
+export const { selectAll: getProducts, selectById } = productsAdapter.getSelectors(state => state.products)
 
 export const getFilteredProducts = createSelector(
     getProducts,

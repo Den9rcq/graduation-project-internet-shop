@@ -9,6 +9,11 @@ const initialState = categoriesAdapter.getInitialState({
     categoriesLoadingStatus: 'loading'
 })
 
+export const fetchCategories = createAsyncThunk(
+    'categories/fetchCategories',
+    () => categoryService.fetchAll()
+)
+
 const categoriesSlice = createSlice({
     name: 'categories',
     initialState,
@@ -37,16 +42,10 @@ const { reducer, actions } = categoriesSlice
 
 export const { activeCategoryChanged } = actions
 
-export const fetchCategories = createAsyncThunk(
-    'categories/fetchCategories',
-    () => categoryService.fetchAll()
-)
-
 export const { selectAll: getCategories, selectById } = categoriesAdapter.getSelectors(state => state.categories)
 
 export const getCategoryById = (id) => (state) => selectById(state, id)
 export const getCurrentCategory = () => (state) => state.categories.activeCategory
-
 export const getCategoriesLoadingStatus = (state) => state.categories.categoriesLoadingStatus
 
 

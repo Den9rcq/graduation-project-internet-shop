@@ -2,11 +2,14 @@ import React from 'react';
 import { Formik, Form } from "formik";
 import TextInput from "../common/formField/TextInput";
 import { loginFields, LoginSchema } from "../../helpers/form.helpers";
+import { useDispatch } from "react-redux";
+import { signInAuth } from "../../store/authSlice";
 
 const LoginForm = () => {
+    const dispatch = useDispatch()
 
-    const handleSubmit = (values, { setSubmitting, resetForm }) => {
-        console.log(values)
+    const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+        dispatch(signInAuth(values))
         resetForm()
         setSubmitting(false)
     }
