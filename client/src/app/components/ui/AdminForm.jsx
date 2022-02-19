@@ -23,8 +23,12 @@ const AdminForm = () => {
         let product;
         if (!variableProduct) {
             product = !values.img
-                ? { ...values, img: 'https://zenit.by/images/no_photo.png' }
-                : values
+                ? {
+                    ...values,
+                    img: 'https://zenit.by/images/no_photo.png',
+                    rate: 0
+                }
+                : { ...values, rate: 0 }
             // Добавить рейт
             dispatch(createProduct(product))
             resetForm()
@@ -32,7 +36,7 @@ const AdminForm = () => {
         } else {
             product = !values.img
                 ? { ...values, img: 'https://zenit.by/images/no_photo.png', _id: variableProduct._id }
-                : {...values, _id: variableProduct._id}
+                : { ...values, _id: variableProduct._id }
             dispatch(updateProduct(product))
             dispatch(selectedProductInstalled(null))
             setSubmitting(false)

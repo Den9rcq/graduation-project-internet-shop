@@ -116,12 +116,12 @@ label.active {
     z-index: 1;
     will-change: width, height;
     top: -176px;
-    left: 1px;
+    left: -92px;
 }
 .dropdown-content_active {
     opacity: 1;
     top: 64px;
-    left: -40px;
+    left: -92px;
 }
 
 /* Avatar */
