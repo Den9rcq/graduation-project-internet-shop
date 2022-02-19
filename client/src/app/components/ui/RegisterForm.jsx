@@ -6,14 +6,17 @@ import Checkbox from "../common/formField/Checkbox";
 import { registerFields, SignupSchema } from "../../helpers/form.helpers";
 import { useDispatch } from "react-redux";
 import { signUpAuth } from "../../store/authSlice";
+import { useHistory } from "react-router-dom";
 
 const RegisterForm = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
         dispatch(signUpAuth(values))
         resetForm()
         setSubmitting(false)
+        history.push('/')
     }
     return (
         <Formik

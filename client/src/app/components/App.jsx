@@ -3,6 +3,7 @@ import { BasketPage, LoginPage, MainPage, ProductPage, RegistrationPage } from "
 import NavBar from "./ui/NavBar";
 import AppLoader from "./hoc/AppLoader";
 import AdminPanelPage from "./pages/adminPanelPage";
+import LogoutPage from "./pages/logoutPage";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/login" component={LoginPage} />
                         <Route path="/registration" component={RegistrationPage} />
                         <Route path="/admin-panel" component={AdminPanelPage} />
+                        <Route path="/logout" component={LogoutPage}/>
                         <Redirect to='/' />
                     </Switch>
                 </AppLoader>
