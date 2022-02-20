@@ -20,11 +20,7 @@ const schema = new Schema({
     sex: {
         type: String,
         enum: ['male', 'female', 'other']
-    },
-    cart: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Product',
-    }]
+    }
 }, {
     timestamps: true
 })

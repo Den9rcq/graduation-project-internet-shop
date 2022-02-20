@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, getProductLoadingStatus } from "../../store/productsSlice";
 import { fetchCategories, getCategoriesLoadingStatus } from "../../store/categoriesSlice";
 import { getIsLoggedIn, isLoggedInAuth } from "../../store/authSlice";
+import { fetchCart } from "../../store/cartSlice";
 
 const AppLoader = ({ children }) => {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ const AppLoader = ({ children }) => {
     useEffect(() => {
         if (isLoggedIn) {
             dispatch(isLoggedInAuth())
+            dispatch(fetchCart())
         }
         dispatch(fetchProducts())
         dispatch(fetchCategories())

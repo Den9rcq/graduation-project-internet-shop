@@ -1,25 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../store/productsSlice";
 import { getCurrentUser } from "../../store/authSlice";
+import { addedProductToCart } from "../../store/cartSlice";
 
 const ProductCard = () => {
     const { productId } = useParams()
     const history = useHistory()
     const product = useSelector(getProductById(productId))
     const authUser = useSelector(getCurrentUser)
+    const dispatch = useDispatch()
+    const [count, setCount] = useState(1)
     const { name, img, _id, quantity, price } = product
 
     if (!product) {
         return "Loading"
     }
 
-    const onBuyProduct = () => {
+    const onBuyProduct = (id) => {
         if (!authUser) {
             history.push('/login')
         } else {
-            console.log('логика покупки товара')
+
+            dispatch(addedProductToCart({ id, count: Number(count) }))
         }
 
     }
@@ -42,9 +46,10 @@ const ProductCard = () => {
                 <div className="card-action">
                     <button
                         className="waves-effect waves-light red accent-1 btn"
-                    onClick={onBuyProduct}>
+                        onClick={() => onBuyProduct(_id)}>
                         Купить
                     </button>
+                    <input type="number" onChange={e => {setCount(e.target.value)}} value={count} />
                 </div>
             </div>
         </div>
