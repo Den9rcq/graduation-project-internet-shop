@@ -10,7 +10,8 @@ const schema = new Schema({
             productId: {
                 type: Schema.Types.ObjectId,
                 ref: 'Product'
-            }
+            },
+            sumProduct: 0
     }]
 }, {
     timestamps: true

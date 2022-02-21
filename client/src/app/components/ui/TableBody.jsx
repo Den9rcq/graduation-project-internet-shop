@@ -2,17 +2,19 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryById } from "../../store/categoriesSlice";
 import { removeProduct, selectedProductInstalled } from "../../store/productsSlice";
+import { removeProductToCart } from "../../store/cartSlice";
 
 const TableBody = ({ _id, name, price, quantity, category}) => {
     const { label: labelCategory } = useSelector(getCategoryById(category))
     const dispatch = useDispatch()
 
-    const onEditProduct = () => {
-        dispatch(selectedProductInstalled(_id))
+    const onEditProduct = (id) => {
+        dispatch(selectedProductInstalled(id))
     }
 
-    const onRemoveProduct = () => {
-        dispatch(removeProduct(_id))
+    const onRemoveProduct = (id) => {
+        dispatch(removeProduct(id))
+        dispatch(removeProductToCart(id))
     }
 
     return (
@@ -24,11 +26,11 @@ const TableBody = ({ _id, name, price, quantity, category}) => {
             <td>{quantity}</td>
             <td className="flex-evenly">
                 <button className="waves-effect waves-light btn-small blue darken-4"
-                        onClick={onEditProduct}>
+                        onClick={() =>onEditProduct(_id)}>
                     <i className="material-icons center">edit</i>
                 </button>
                 <button className="waves-effect waves-light btn-small red darken-4"
-                        onClick={onRemoveProduct}>
+                        onClick={() =>onRemoveProduct(_id)}>
                     <i className="material-icons center">delete_forever</i>
                 </button>
             </td>

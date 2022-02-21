@@ -1,12 +1,15 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../store/productsSlice";
+import { removeProductToCart } from "../../store/cartSlice";
+import { Link } from "react-router-dom";
 
 const ProductCardBasket = ({ productId, count }) => {
     const { img, name, _id, price } = useSelector(getProductById(productId))
+    const dispatch = useDispatch()
 
     const onDelete = (productId) => {
-        console.log(productId)
+        dispatch(removeProductToCart(productId))
     }
 
     return (
@@ -16,10 +19,8 @@ const ProductCardBasket = ({ productId, count }) => {
             </div>
             <div className="card-stacked">
                 <div className="card-content">
-                    <p className="card-content__header">{name}</p>
+                    <Link to={`/product/${_id}`}><p className="card-content__header">{name}</p></Link>
                     <p className='card-content__content'>{`ID Товара: ${_id}`}</p>
-                </div>
-                <div className="card-content">
                     <p className='card-content__price'>{`Количество: ${count}`}</p>
                 </div>
                 <div className="card-content">

@@ -17,6 +17,7 @@ const schema = new Schema({
     },
     admin: Boolean,
     image: String,
+    cart: { type: Schema.Types.ObjectId, ref: 'Cart' },
     sex: {
         type: String,
         enum: ['male', 'female', 'other']

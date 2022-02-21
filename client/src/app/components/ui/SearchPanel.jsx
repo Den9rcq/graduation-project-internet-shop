@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchString, searchStringChanged } from "../../store/productsSlice";
+import { useHistory } from "react-router-dom";
 
 const SearchPanel = () => {
     const [value, setValue] = useState('')
     const searchString = useSelector(getSearchString)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() => {
         if (searchString) {
@@ -25,6 +27,7 @@ const SearchPanel = () => {
     const onKeyHandler = (e) => {
         if (e.key === 'Enter') {
             dispatch(searchStringChanged(value.trim().toLowerCase()))
+            history.push('/')
         }
     }
 

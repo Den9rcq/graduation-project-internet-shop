@@ -85,12 +85,27 @@ label.active {
     margin-bottom: 5rem;
 }
 
+.mx-1 {
+    margin: 0 1rem;
+}
+.mx-2 {
+    margin: 0 2rem;
+}
+.mx-3 {
+    margin: 0 3rem;
+}
+
 /* Flex */
 .flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.flex-center-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .flex-evenly {
     display: flex;
@@ -267,4 +282,30 @@ nav ul li a.active {
 .collection .collection-item.active {
     background-color: #ee6e73;
     color: #eafaf9;
+}
+
+/* Badge */
+span.badge.new:after {
+    content: none;
+}
+
+span.badge.new {
+    font-weight: 400;
+    font-size: 1rem;
+    color: red;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+/* Label */
+
+.input-field>label {
+    z-index: -1;
+}
+.input-field>label.checkbox {
+    z-index: 1;
+}
+
+.card {
+    background-color: rgba(255,255,255,0.5);
 }

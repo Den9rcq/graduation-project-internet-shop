@@ -3,10 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "../../store/authSlice";
 import Avatar from "../common/Avatar";
+import { getTotalProduct } from "../../store/cartSlice";
 
 const NavBar = () => {
     const user = useSelector(getCurrentUser)
     const [dropdown, setDropdown] = useState(false)
+    const totalProduct = useSelector(getTotalProduct)
 
     return (
         <nav>
@@ -32,7 +34,9 @@ const NavBar = () => {
                                 <li>
                                     <NavLink
                                         to={`/basket/${user._id}`}
-                                        activeClassName="active">
+                                        activeClassName="active"
+                                        className="flex-center-row">
+                                        {totalProduct ? <span className="new badge">{totalProduct}</span> : ''}
                                         <i className="large material-icons">shopping_cart</i>
                                     </NavLink>
                                 </li>

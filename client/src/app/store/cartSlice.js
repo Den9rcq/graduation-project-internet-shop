@@ -1,13 +1,11 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 import cartService from "../services/cart.service";
 
-
-const cartAdapter = createEntityAdapter()
-
-const initialState = cartAdapter.getInitialState({
+const initialState = {
+    order: [],
     cartLoadingStatus: 'loading',
-    total: 0
-})
+    totalProduct: 0,
+}
 
 export const fetchCart = createAsyncThunk(
     'cart/fetchCart',
@@ -17,6 +15,11 @@ export const fetchCart = createAsyncThunk(
 export const addedProductToCart = createAsyncThunk(
     'cart/addedProductToCart',
     (payload) => cartService.addProductToCart(payload)
+)
+
+export const removeProductToCart = createAsyncThunk(
+    'cart/removeProductToCart',
+    (id) => cartService.removeProductToCart(id)
 )
 
 
@@ -31,7 +34,8 @@ const cartSlice = createSlice({
                 state.cartLoadingStatus = 'loading'
             })
             .addCase(fetchCart.fulfilled, (state, action) => {
-                cartAdapter.setAll(state, action.payload)
+                state.order = action.payload
+                state.totalProduct = action.payload.length
                 state.cartLoadingStatus = 'idle'
             })
             .addCase(fetchCart.rejected, state => {
@@ -43,19 +47,35 @@ const cartSlice = createSlice({
                 state.cartLoadingStatus = 'loading'
             })
             .addCase(addedProductToCart.fulfilled, (state, action) => {
-                cartAdapter.setOne(state, action.payload)
+                state.order = action.payload
+                state.totalProduct = action.payload.length
                 state.cartLoadingStatus = 'idle'
             })
             .addCase(addedProductToCart.rejected, state => {
                 state.cartLoadingStatus = 'error'
             })
+
+        // Remove product to cart
+        builder
+            .addCase(removeProductToCart.pending, state => {
+                state.cartLoadingStatus = 'loading'
+            })
+            .addCase(removeProductToCart.fulfilled, (state, action) => {
+                state.order = action.payload
+                state.totalProduct = action.payload.length
+                state.cartLoadingStatus = 'idle'
+            })
+            .addCase(removeProductToCart.rejected, state => {
+                state.cartLoadingStatus = 'error'
+            })
     }
 })
 
-const { reducer, actions } = cartSlice
+const { reducer } = cartSlice
 
-
-export const { selectAll: getCart } = cartAdapter.getSelectors(state => state.cart)
-
+export const getCart = state => state.cart.order
+export const getCartProduct = (productId) => state => state.cart.order.find(product => product.productId === productId) || []
+export const getTotalProduct = state => state.cart.totalProduct
+export const getTotalSumProducts = state => state.cart.order.map(product => product.sumProduct).reduce((sum, current) => sum + current, 0)
 
 export default reducer

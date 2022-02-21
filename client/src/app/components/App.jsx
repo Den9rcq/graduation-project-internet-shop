@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-d
 import { BasketPage, LoginPage, MainPage, ProductPage, RegistrationPage } from "./pages";
 import NavBar from "./ui/NavBar";
 import AppLoader from "./hoc/AppLoader";
-import AdminPanelPage from "./pages/adminPanelPage";
-import LogoutPage from "./pages/logoutPage";
+import AdminPanelPage from "./pages/AdminPanelPage";
+import LogoutPage from "./pages/LogoutPage";
 
 function App() {
     return (

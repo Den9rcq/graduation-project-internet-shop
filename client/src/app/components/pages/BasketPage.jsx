@@ -3,17 +3,19 @@ import SearchPanel from "../ui/SearchPanel";
 import ProductCardBasket from "../ui/ProductCardBasket";
 import OrderTotal from "../ui/OrderTotal";
 import { useSelector } from "react-redux";
-import { getCart } from "../../store/cartSlice";
+import { getCart, getCartProducts } from "../../store/cartSlice";
+import { Link } from "react-router-dom";
 
 const BasketPage = () => {
     const cart = useSelector(getCart)
-
     return (
         <div className='container'>
             <SearchPanel />
             <div className="row">
                 <div className="col l9">
-                    {cart.map(order => <ProductCardBasket key={order.productId} {...order} />)}
+                    {cart.length
+                        ? cart.map(product => <ProductCardBasket key={product._id} {...product} />)
+                        : <h3 className="center">Вы не выбрали товары <h5><Link to={'/'}>перейти к выбору</Link></h5></h3>}
                 </div>
                 <div className="col l3">
                     <OrderTotal />

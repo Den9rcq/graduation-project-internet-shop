@@ -70,7 +70,7 @@ export const SignupSchema = Yup.object({
 export const AddingOrChangingSchema = Yup.object({
     name: Yup.string()
              .required('Обязательное поле для заполнения')
-             .min(5, 'Не менее пяти символов'),
+             .min(3, 'Не менее трёх символов'),
     category: Yup.string().required('Обязательно выберите категорию'),
     price: Yup.number()
               .required('Обязательно установите цену')

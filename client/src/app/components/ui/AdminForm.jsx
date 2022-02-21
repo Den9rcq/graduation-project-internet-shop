@@ -12,6 +12,7 @@ import {
     updateProduct
 } from "../../store/productsSlice";
 import { AddingOrChangingSchema, adminFields } from "../../helpers/form.helpers";
+import { getRandomNumber } from "../../utils/randomNumber";
 
 const AdminForm = () => {
     const categories = useSelector(getCategories)
@@ -25,8 +26,9 @@ const AdminForm = () => {
             product = !values.img
                 ? {
                     ...values,
+                    price: Number(values.price),
                     img: 'https://zenit.by/images/no_photo.png',
-                    rate: 0
+                    rate: getRandomNumber(1, 10)
                 }
                 : { ...values, rate: 0 }
             // Добавить рейт
@@ -35,8 +37,14 @@ const AdminForm = () => {
             setSubmitting(false)
         } else {
             product = !values.img
-                ? { ...values, img: 'https://zenit.by/images/no_photo.png', _id: variableProduct._id }
-                : { ...values, _id: variableProduct._id }
+                ? {
+                    ...values,
+                    img: 'https://zenit.by/images/no_photo.png',
+                    _id: variableProduct._id,
+                    price: Number(values.price),
+                    rate: getRandomNumber(1, 10)
+                }
+                : { ...values, _id: variableProduct._id, price: Number(values.price) }
             dispatch(updateProduct(product))
             dispatch(selectedProductInstalled(null))
             setSubmitting(false)
