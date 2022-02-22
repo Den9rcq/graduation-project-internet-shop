@@ -10,7 +10,7 @@ const initialState = localStorageService.getAccessToken()
         isLoggedIn: true,
     }
     : {
-        authLoadingStatus: 'idle',
+        authLoadingStatus: 'loading',
         currentUser: null,
         isLoggedIn: false,
     };
@@ -57,7 +57,7 @@ const authSlice = createSlice({
             })
             .addCase(signInAuth.fulfilled, (state, action) => {
                 state.currentUser = action.payload
-                state.authLoadingStatus = 'idle'
+                state.authLoadingStatus = 'success'
             })
             .addCase(signInAuth.rejected, state => {
                 state.authLoadingStatus = 'error'
@@ -70,7 +70,7 @@ const authSlice = createSlice({
             })
             .addCase(signUpAuth.fulfilled, (state, action) => {
                 state.currentUser = action.payload
-                state.authLoadingStatus = 'idle'
+                state.authLoadingStatus = 'success'
             })
             .addCase(signUpAuth.rejected, state => {
                 state.authLoadingStatus = 'error'
@@ -82,7 +82,7 @@ const authSlice = createSlice({
             })
             .addCase(isLoggedInAuth.fulfilled, (state, action) => {
                 state.currentUser = action.payload
-                state.authLoadingStatus = 'idle'
+                state.authLoadingStatus = 'success'
             })
             .addCase(isLoggedInAuth.rejected, state => {
                 state.authLoadingStatus = 'error'
@@ -100,7 +100,8 @@ export const logOut = () => (dispatch) => {
     dispatch(currentUserLogOut());
 };
 
-export const getCurrentUser = (state) => state.auth.currentUser
-export const getIsLoggedIn = (state) => state.auth.isLoggedIn
+export const getCurrentUser = () => (state) => state.auth.currentUser
+export const getAuthLoadingStatus = () => (state) => state.auth.authLoadingStatus
+export const getIsLoggedIn = () => (state) => state.auth.isLoggedIn
 
 export default reducer

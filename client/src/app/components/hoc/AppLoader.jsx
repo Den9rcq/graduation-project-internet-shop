@@ -1,29 +1,17 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, getProductLoadingStatus } from "../../store/productsSlice";
-import { fetchCategories, getCategoriesLoadingStatus } from "../../store/categoriesSlice";
 import { getIsLoggedIn, isLoggedInAuth } from "../../store/authSlice";
-import { fetchCart } from "../../store/cartSlice";
 
 const AppLoader = ({ children }) => {
+    const logged = useSelector(getIsLoggedIn())
     const dispatch = useDispatch()
-    const productLoading = useSelector(getProductLoadingStatus)
-    const categoryLoading = useSelector(getCategoriesLoadingStatus)
-    const isLoggedIn = useSelector(getIsLoggedIn)
 
     useEffect(() => {
-        if (isLoggedIn) {
+        if (logged) {
             dispatch(isLoggedInAuth())
-            dispatch(fetchCart())
         }
-        dispatch(fetchProducts())
-        dispatch(fetchCategories())
-        // eslint-disable-next-line
     }, [])
 
-    if (productLoading === 'loading' || categoryLoading === 'loading') {
-        return 'loading'
-    }
     return (
         children
     );

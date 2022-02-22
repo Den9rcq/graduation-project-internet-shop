@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const SearchPanel = () => {
     const [value, setValue] = useState('')
-    const searchString = useSelector(getSearchString)
+    const searchString = useSelector(getSearchString())
     const dispatch = useDispatch()
     const history = useHistory()
 

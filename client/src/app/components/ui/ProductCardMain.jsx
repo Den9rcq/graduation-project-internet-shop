@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Link, useParams } from "react-router-dom";
+import { createSelector } from "@reduxjs/toolkit";
 
-
-const ProductCardMain = ({name, _id, price, img,}) => {
+const ProductCardMain = ({ name, _id, price, img, }) => {
     return (
         <div className="card horizontal">
             <div className="card-image">
                 <img alt={name}
-                     src={img}/>
+                     src={img} />
             </div>
             <div className="card-stacked">
                 <div className="card-content">

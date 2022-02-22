@@ -1,5 +1,6 @@
 import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 import productService from "../services/product.service";
+import { getCurrentCategory } from "./categoriesSlice";
 
 const productsAdapter = createEntityAdapter({
     selectId: product => product._id,
@@ -57,7 +58,7 @@ const productsSlice = createSlice({
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
                 productsAdapter.setAll(state, action.payload)
-                state.productsLoadingStatus = 'idle'
+                state.productsLoadingStatus = 'success'
             })
             .addCase(fetchProducts.rejected, state => {
                 state.productsLoadingStatus = 'error'
@@ -70,7 +71,7 @@ const productsSlice = createSlice({
             })
             .addCase(createProduct.fulfilled, (state, action) => {
                 productsAdapter.setOne(state, action.payload)
-                state.productsLoadingStatus = 'idle'
+                state.productsLoadingStatus = 'success'
             })
             .addCase(createProduct.rejected, state => {
                 state.productsLoadingStatus = 'error'
@@ -83,7 +84,7 @@ const productsSlice = createSlice({
             })
             .addCase(updateProduct.fulfilled, (state, action) => {
                 productsAdapter.setOne(state, action.payload)
-                state.productsLoadingStatus = 'idle'
+                state.productsLoadingStatus = 'success'
             })
             .addCase(updateProduct.rejected, state => {
                 state.productsLoadingStatus = 'error'
@@ -96,6 +97,7 @@ const productsSlice = createSlice({
             })
             .addCase(removeProduct.fulfilled, (state, action) => {
                 productsAdapter.removeOne(state, action.payload)
+                state.productsLoadingStatus = 'success'
             })
             .addCase(removeProduct.rejected, state => {
                 state.productsLoadingStatus = 'error'
@@ -110,18 +112,17 @@ export const { selectAll: getProducts, selectById } = productsAdapter.getSelecto
 
 export const getFilteredProducts = createSelector(
     getProducts,
-    state => state.categories.activeCategory,
+    getCurrentCategory(),
     (products, activeCategory) => (
         activeCategory.name === 'all' || !activeCategory?._id
             ? products
             : products.filter(product => product.category === activeCategory._id)
     )
 )
-
 export const getProductById = (id) => (state) => selectById(state, id)
-export const getSortStatus = (state) => state.products.sortStatus
-export const getSearchString = (state) => state.products.searchString
-export const getProductLoadingStatus = (state) => state.products.productsLoadingStatus
-export const getSelectedProduct = (state) => state.products.selectedProduct
+export const getSortStatus = () => (state) => state.products.sortStatus
+export const getSearchString = () => (state) => state.products.searchString
+export const getProductLoadingStatus = () => (state) => state.products.productsLoadingStatus
+export const getSelectedProduct = () => (state) => state.products.selectedProduct
 
 export default reducer

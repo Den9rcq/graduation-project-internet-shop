@@ -20,6 +20,7 @@ const authService = {
         const { data } = await httpService.post(authEndpoint + "token", {
             refresh_token: localStorageService.getRefreshToken()
         });
+        // localStorageService.setTokens(data)
         return data;
     }
 };

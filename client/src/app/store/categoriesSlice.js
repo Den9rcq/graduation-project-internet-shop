@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from "@reduxjs/toolkit";
 import categoryService from "../services/category.service";
 
 const categoriesAdapter = createEntityAdapter({
@@ -29,7 +29,7 @@ const categoriesSlice = createSlice({
             })
             .addCase(fetchCategories.fulfilled, (state, action) => {
                 categoriesAdapter.setAll(state, action.payload)
-                state.categoriesLoadingStatus = 'idle'
+                state.categoriesLoadingStatus = 'success'
             })
             .addCase(fetchCategories.rejected, state => {
                 state.categoriesLoadingStatus = 'error'
@@ -46,7 +46,7 @@ export const { selectAll: getCategories, selectById } = categoriesAdapter.getSel
 
 export const getCategoryById = (id) => (state) => selectById(state, id)
 export const getCurrentCategory = () => (state) => state.categories.activeCategory
-export const getCategoriesLoadingStatus = (state) => state.categories.categoriesLoadingStatus
 
+export const getCategoriesLoadingStatus = () => (state) => state.categories.categoriesLoadingStatus
 
 export default reducer
