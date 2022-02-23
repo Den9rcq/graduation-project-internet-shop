@@ -30,7 +30,7 @@ const ProductCardList = () => {
         page,
         setPage,
         totalPages,
-    } = usePagination({ contentOnObjectPage: 3, numberOfPages: products.length });
+    } = usePagination({ contentOnObjectPage: 3, numberOfPages: foundProducts.length });
 
     useEffect(() => {
         dispatch(fetchProducts())
