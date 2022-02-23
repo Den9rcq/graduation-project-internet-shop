@@ -10,6 +10,8 @@ import {
 } from "../../store/productsSlice";
 import { productSorting } from "../../utils/productSorting";
 import LoadingProgressBar from "./LoadingProgressBar";
+import usePagination from "../../hooks/usePagination";
+import Pagination from "./Pagination";
 
 const ProductCardList = () => {
     const products = useSelector(getFilteredProducts)
@@ -19,6 +21,16 @@ const ProductCardList = () => {
     const sortedProducts = productSorting(products, sortStatus)
     const foundProducts = sortedProducts.filter(product => product.name.toLowerCase().trim().includes(searchString))
     const dispatch = useDispatch()
+
+    const {
+        firstContentIndex,
+        lastContentIndex,
+        nextPage,
+        prevPage,
+        page,
+        setPage,
+        totalPages,
+    } = usePagination({ contentOnObjectPage: 3, numberOfPages: products.length });
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -31,8 +43,12 @@ const ProductCardList = () => {
     return (
         <>
             {foundProducts.length !== 0
-                ? foundProducts.map(product => <ProductCardMain key={product._id} {...product} />)
+                ? foundProducts
+                    .slice(firstContentIndex, lastContentIndex)
+                    .map(product => <ProductCardMain key={product._id} {...product} />)
                 : <h3 className="px-1">Таких товаров нет</h3>}
+
+            {<Pagination page={page} totalPages={totalPages} setPage={setPage} nextPage={nextPage} prevPage={prevPage} />}
         </>
     );
 };
