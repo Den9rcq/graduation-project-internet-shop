@@ -4,7 +4,7 @@ import TableProducts from "../ui/TableProducts";
 
 const AdminPanelPage = () => {
     return (
-        <div className="container mt-3">
+        <div className="container mt-7">
             <div className="row">
                 <div className="col l3 card">
                     <h5 className="center mb-3">Добавление товара</h5>

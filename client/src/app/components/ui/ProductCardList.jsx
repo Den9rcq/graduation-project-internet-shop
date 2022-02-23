@@ -9,6 +9,7 @@ import {
     getSortStatus
 } from "../../store/productsSlice";
 import { productSorting } from "../../utils/productSorting";
+import LoadingProgressBar from "./LoadingProgressBar";
 
 const ProductCardList = () => {
     const products = useSelector(getFilteredProducts)
@@ -24,7 +25,7 @@ const ProductCardList = () => {
     }, [])
 
     if (loadingStatusProducts === 'loading') {
-        return 'loading'
+        return <LoadingProgressBar />
     }
 
     return (

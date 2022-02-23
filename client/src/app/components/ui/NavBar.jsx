@@ -10,7 +10,7 @@ const NavBar = () => {
     const user = useSelector(getCurrentUser())
 
     return (
-        <nav>
+        <nav className="nav-bar">
             <div className="nav-wrapper px-2">
                 <Link to='/' className="brand-logo center">
                     Internet shop

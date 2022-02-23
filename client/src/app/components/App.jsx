@@ -4,6 +4,7 @@ import NavBar from "./ui/NavBar";
 import AdminPanelPage from "./pages/AdminPanelPage";
 import LogoutPage from "./pages/LogoutPage";
 import AppLoader from "./hoc/AppLoader";
+import React from "react";
 
 function App() {
     return (

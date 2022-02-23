@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCart, getCartProducts } from "../../store/cartSlice";
 import { Link } from "react-router-dom";
 import { fetchProducts, getProductLoadingStatus } from "../../store/productsSlice";
+import LoadingProgressBar from "../ui/LoadingProgressBar";
 
 const BasketPage = () => {
     const cart = useSelector(getCart)
@@ -22,7 +23,7 @@ const BasketPage = () => {
             <div className="row">
                 <div className="col l9">
                     {
-                        loadingStatusProduct === 'loading' ? 'loading'
+                        loadingStatusProduct === 'loading' ? <LoadingProgressBar />
                             : cart.length ? cart.map(product => <ProductCardBasket key={product._id} {...product} />)
                                 : <div className="center">
                                     <h3>Вы не выбрали товары</h3> <h5><Link to={'/'}>перейти к выбору</Link></h5>

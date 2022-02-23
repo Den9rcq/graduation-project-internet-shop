@@ -6,7 +6,6 @@ import { removeProductToCart } from "../../store/cartSlice";
 
 const TableBody = ({ _id, name, price, quantity, category}) => {
     const categories = useSelector(getCategoryById(category))
-    const loadingStatusCategory = useSelector(getCategoriesLoadingStatus())
     const dispatch = useDispatch()
 
     const onEditProduct = (id) => {

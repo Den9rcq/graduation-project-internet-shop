@@ -62,6 +62,9 @@ label.active {
 .mt-5 {
     margin-top: 5rem;
 }
+.mt-7 {
+    margin-top: 7rem;
+}
 
 /* Bottom */
 
@@ -83,6 +86,9 @@ label.active {
 
 .mb-5 {
     margin-bottom: 5rem;
+}
+.m-0 {
+    margin: 0;
 }
 
 .mx-1 {
@@ -308,4 +314,30 @@ span.badge.new {
 
 .card {
     background-color: rgba(255,255,255,0.5);
+}
+
+/* Placeholder */
+
+.progress {
+    position: relative;
+    height: 4px;
+    display: block;
+    width: 100%;
+    background-color: #ee6e73;
+    border-radius: 2px;
+    margin: 0.5rem 0 1rem 0;
+    overflow: hidden;
+}
+
+.progress .indeterminate {
+    background-color: red;
+}
+
+/* NavBar */
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
 }

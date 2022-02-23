@@ -1,12 +1,21 @@
-import React from 'react';
-import { useSelector } from "react-redux";
-import { getProductLoadingStatus, getProducts } from "../../store/productsSlice";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, getProductLoadingStatus, getProducts } from "../../store/productsSlice";
 import TableBody from "./TableBody";
+import LoadingProgressBar from "./LoadingProgressBar";
 
 const TableProducts = () => {
     const product = useSelector(getProducts)
-    const loadingStatusProduct = useSelector(getProductLoadingStatus())
+    const loadingStatusProducts = useSelector(getProductLoadingStatus())
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [])
+
+    if (loadingStatusProducts === 'loading') {
+        return <LoadingProgressBar />
+    }
     return (
         <table className="striped centered">
             <thead>
@@ -21,7 +30,7 @@ const TableProducts = () => {
             </thead>
 
             <tbody>
-            {product.map(product => <TableBody key={product._id} {...product}/>)}
+            {product.map(product => <TableBody key={product._id} {...product} />)}
             </tbody>
         </table>
     );

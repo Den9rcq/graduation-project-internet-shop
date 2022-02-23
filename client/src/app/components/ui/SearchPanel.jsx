@@ -32,7 +32,7 @@ const SearchPanel = () => {
     }
 
     return (
-        <div className="row mt-2">
+        <div className="row mt-7">
             <div className="input-field s10">
                 <input
                     id="searchPanel"
