@@ -1,21 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchPanel from "../ui/SearchPanel";
 import ProductCardBasket from "../ui/ProductCardBasket";
 import OrderTotal from "../ui/OrderTotal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCart, getCartProducts } from "../../store/cartSlice";
 import { Link } from "react-router-dom";
+import { fetchProducts, getProductLoadingStatus } from "../../store/productsSlice";
 
 const BasketPage = () => {
     const cart = useSelector(getCart)
+    const dispatch = useDispatch()
+    const loadingStatusProduct = useSelector(getProductLoadingStatus())
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [])
+
     return (
         <div className='container'>
             <SearchPanel />
             <div className="row">
                 <div className="col l9">
-                    {cart.length
-                        ? cart.map(product => <ProductCardBasket key={product._id} {...product} />)
-                        : <h3 className="center">Вы не выбрали товары <h5><Link to={'/'}>перейти к выбору</Link></h5></h3>}
+                    {
+                        loadingStatusProduct === 'loading' ? 'loading'
+                            : cart.length ? cart.map(product => <ProductCardBasket key={product._id} {...product} />)
+                                : <div className="center">
+                                    <h3>Вы не выбрали товары</h3> <h5><Link to={'/'}>перейти к выбору</Link></h5>
+                                </div>
+                    }
                 </div>
                 <div className="col l3">
                     <OrderTotal />

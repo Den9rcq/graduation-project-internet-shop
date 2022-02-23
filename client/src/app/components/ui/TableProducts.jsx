@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from "react-redux";
-import { getProducts } from "../../store/productsSlice";
+import { getProductLoadingStatus, getProducts } from "../../store/productsSlice";
 import TableBody from "./TableBody";
 
 const TableProducts = () => {
     const product = useSelector(getProducts)
+    const loadingStatusProduct = useSelector(getProductLoadingStatus())
 
     return (
         <table className="striped centered">

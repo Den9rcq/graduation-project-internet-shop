@@ -6,11 +6,6 @@ import { fetchCategories, getCategories, getCategoriesLoadingStatus } from "../.
 const CategoryPanel = () => {
     const categories = useSelector(getCategories)
     const loadingStatusCategories = useSelector(getCategoriesLoadingStatus())
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(fetchCategories())
-    }, [])
 
     if (loadingStatusCategories === 'loading' || loadingStatusCategories === 'idle') {
         return 'loading'

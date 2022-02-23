@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, getProductById, getProductLoadingStatus } from "../../store/productsSlice";
-import {
-    activeCategoryChanged,
-    fetchCategories,
-    getCategoriesLoadingStatus,
-    getCategoryById
-} from "../../store/categoriesSlice";
+import { getProductById } from "../../store/productsSlice";
+import { activeCategoryChanged, getCategoryById } from "../../store/categoriesSlice";
 
 
 const Breadcrumbs = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getProductById } from "../../store/productsSlice";
+import { getProductById} from "../../store/productsSlice";
 import { removeProductToCart } from "../../store/cartSlice";
 import { Link } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const ProductCardBasket = ({ productId, count }) => {
     const onDelete = (productId) => {
         dispatch(removeProductToCart(productId))
     }
+
 
     return (
         <div className="card horizontal card__basket">

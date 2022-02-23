@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Breadcrumbs from "../ui/Breadcrumbs";
 import ProductCard from "../ui/ProductCard";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, getProductLoadingStatus } from "../../store/productsSlice";
-import { fetchCategories, getCategoriesLoadingStatus } from "../../store/categoriesSlice";
+import { useSelector } from "react-redux";
+import { getProductLoadingStatus } from "../../store/productsSlice";
+import { getCategoriesLoadingStatus } from "../../store/categoriesSlice";
 
 const ProductPage = () => {
     const loadingStatusProducts = useSelector(getProductLoadingStatus())
     const loadingStatusCategories = useSelector(getCategoriesLoadingStatus())
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(fetchProducts())
-        dispatch(fetchCategories())
-    }, [])
 
     if (loadingStatusProducts === 'loading' || loadingStatusCategories === 'loading') {
         return 'loading'

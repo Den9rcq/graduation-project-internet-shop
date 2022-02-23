@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getCategoryById } from "../../store/categoriesSlice";
+import { getCategoriesLoadingStatus, getCategoryById } from "../../store/categoriesSlice";
 import { removeProduct, selectedProductInstalled } from "../../store/productsSlice";
 import { removeProductToCart } from "../../store/cartSlice";
 
 const TableBody = ({ _id, name, price, quantity, category}) => {
-    const { label: labelCategory } = useSelector(getCategoryById(category))
+    const categories = useSelector(getCategoryById(category))
+    const loadingStatusCategory = useSelector(getCategoriesLoadingStatus())
     const dispatch = useDispatch()
 
     const onEditProduct = (id) => {
@@ -21,7 +22,7 @@ const TableBody = ({ _id, name, price, quantity, category}) => {
         <tr>
             <td>{_id}</td>
             <td>{name}</td>
-            <td>{labelCategory}</td>
+            <td>{categories?.label}</td>
             <td>{price}₽</td>
             <td>{quantity}</td>
             <td className="flex-evenly">
