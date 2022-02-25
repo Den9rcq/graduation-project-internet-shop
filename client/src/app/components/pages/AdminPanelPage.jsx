@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AdminForm from "../ui/AdminForm";
 import TableProducts from "../ui/TableProducts";
 

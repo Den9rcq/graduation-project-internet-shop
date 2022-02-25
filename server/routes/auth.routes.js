@@ -5,7 +5,6 @@ const User = require('../models/User')
 const { generateUserData } = require('../utils/helper');
 const tokenService = require('../services/token.service')
 const Cart = require("../models/Cart");
-const { Types } = require("mongoose");
 
 const router = express.Router({ mergeParams: true })
 

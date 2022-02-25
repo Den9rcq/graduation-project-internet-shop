@@ -11,10 +11,7 @@ const ProtectedRoute = ({ component: Component, children, ...rest }) => {
                        if (!isAdmin) {
                            return (
                                <Redirect to={{
-                                   pathname: "/",
-                                   state: {
-                                       from: props.location
-                                   }
+                                   pathname: "/"
                                }}/>
                            );
                        }
