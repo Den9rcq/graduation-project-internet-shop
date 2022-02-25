@@ -1,5 +1,6 @@
 import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 import cartService from "../services/cart.service";
+import { toast } from "react-toastify";
 
 const initialState = {
     order: [],
@@ -14,7 +15,14 @@ export const fetchCart = createAsyncThunk(
 
 export const addedProductToCart = createAsyncThunk(
     'cart/addedProductToCart',
-    (payload) => cartService.addProductToCart(payload)
+    (payload) => {
+        try {
+            toast.success(`Вы добавили товар в карзину в количестве ${payload.count} шт`)
+            return cartService.addProductToCart(payload)
+        } catch (e) {
+            toast.success('Не получилось добавить товар в корзину')
+        }
+    }
 )
 
 export const removeProductToCart = createAsyncThunk(

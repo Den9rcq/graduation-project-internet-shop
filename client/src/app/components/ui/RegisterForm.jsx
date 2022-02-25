@@ -16,7 +16,6 @@ const RegisterForm = () => {
         dispatch(signUpAuth(values))
         resetForm()
         setSubmitting(false)
-        history.push('/')
     }
     return (
         <Formik

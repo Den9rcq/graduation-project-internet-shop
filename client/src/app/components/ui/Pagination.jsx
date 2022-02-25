@@ -1,6 +1,11 @@
 import React from 'react';
 
 const Pagination = ({ page, prevPage, nextPage, setPage, totalPages }) => {
+
+    if (totalPages <= 1) {
+        return null
+    }
+
     return (
         <ul className="pagination center">
             <li className={page === 1 ? 'disabled' : ''}>

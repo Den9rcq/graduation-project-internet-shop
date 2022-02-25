@@ -4,7 +4,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 const ProductCardMain = ({ name, _id, price, img, }) => {
     return (
-        <div className="card horizontal">
+        <div className="card horizontal card-main">
             <div className="card-image">
                 <img alt={name}
                      src={img} />

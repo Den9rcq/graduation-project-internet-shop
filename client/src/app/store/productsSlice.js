@@ -1,6 +1,7 @@
 import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 import productService from "../services/product.service";
 import { getCurrentCategory } from "./categoriesSlice";
+import { toast } from "react-toastify";
 
 const productsAdapter = createEntityAdapter({
     selectId: product => product._id,
@@ -21,7 +22,10 @@ export const fetchProducts = createAsyncThunk(
 
 export const createProduct = createAsyncThunk(
     'products/createProduct',
-    (payload) => productService.create(payload)
+    (payload) => {
+        toast.success(`Товар ${payload.name} добавлен в магазин. Его цена ${payload.price}₽ в количестве ${payload.quantity} шт`)
+        return productService.create(payload)
+    }
 )
 
 export const updateProduct = createAsyncThunk(
@@ -31,7 +35,10 @@ export const updateProduct = createAsyncThunk(
 
 export const removeProduct = createAsyncThunk(
     'products/removeProduct',
-    (id) => productService.delete(id)
+    (id) => {
+        toast.warning('Товар удалён')
+        return productService.delete(id)
+    }
 )
 
 

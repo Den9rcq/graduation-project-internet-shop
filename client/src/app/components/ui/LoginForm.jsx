@@ -4,17 +4,14 @@ import TextInput from "../common/formField/TextInput";
 import { loginFields, LoginSchema } from "../../helpers/form.helpers";
 import { useDispatch } from "react-redux";
 import { signInAuth } from "../../store/authSlice";
-import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
         dispatch(signInAuth(values))
         resetForm()
         setSubmitting(false)
-        history.push('/')
     }
 
     return (

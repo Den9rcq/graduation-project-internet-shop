@@ -2,6 +2,7 @@ import axios from "axios";
 import configFile from "../../config.json";
 import localStorageService from "./localStorage.service";
 import authService from "./auth.service";
+import { toast } from "react-toastify";
 
 const http = axios.create({
     baseURL: configFile.apiEndpoint
@@ -28,6 +29,22 @@ http.interceptors.request.use(
     (error => {
         return Promise.reject(error);
     })
+)
+
+http.interceptors.response.use(
+    res => res,
+    error => {
+        const expectedErrors =
+            error.response &&
+            error.response.status >= 400 &&
+            error.response.status < 500;
+
+        if (!expectedErrors) {
+            console.log(error);
+            toast.error("Сервер не отвечат. Попробуйте позже");
+        }
+        return Promise.reject(error);
+    }
 )
 
 const httpService = {

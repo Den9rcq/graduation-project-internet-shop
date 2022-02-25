@@ -16,7 +16,7 @@ import { getRandomNumber } from "../../utils/randomNumber";
 
 const AdminForm = () => {
     const categories = useSelector(getCategories)
-    const selectedProduct = useSelector(getSelectedProduct)
+    const selectedProduct = useSelector(getSelectedProduct())
     const variableProduct = useSelector(getProductById(selectedProduct))
     const dispatch = useDispatch()
 

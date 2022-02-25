@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "../services/auth.service";
 import localStorageService from "../services/localStorage.service";
 import userService from "../services/user.service";
+import { toast } from "react-toastify";
+import history from "../utils/history";
 
 const initialState = localStorageService.getAccessToken()
     ? {
@@ -18,18 +20,34 @@ const initialState = localStorageService.getAccessToken()
 export const signInAuth = createAsyncThunk(
     'auth/signInAuth',
     async ({ email, password }) => {
-        const data = await authService.login({ email, password })
-        localStorageService.setTokens(data)
-        return await userService.getCurrentUser()
+        try {
+            const data = await authService.login({ email, password })
+            localStorageService.setTokens(data)
+            history.push('/')
+            toast.success('Вы вошли в систему')
+            return await userService.getCurrentUser()
+        } catch (e) {
+            toast.error('Неверные данные')
+        }
     }
 )
 
 export const signUpAuth = createAsyncThunk(
     'auth/signUpAuth',
     async (payload) => {
-        const data = await authService.register(payload)
-        localStorageService.setTokens(data)
-        return await userService.getCurrentUser()
+        try {
+            const data = await authService.register(payload)
+            localStorageService.setTokens(data)
+            toast.success('Вы успешно зарегестрировались')
+            history.push('/')
+            return await userService.getCurrentUser()
+        } catch (e) {
+            if (e.response.data.error.message === 'EMAIL_EXISTS') {
+                toast.error('Такой Email уже существует')
+            } else {
+                toast.error('Вы не зарегестрированны, проверте данные')
+            }
+        }
     }
 )
 
@@ -101,6 +119,7 @@ export const logOut = () => (dispatch) => {
 };
 
 export const getCurrentUser = () => (state) => state.auth.currentUser
+export const getAdmin = () => (state) => state.auth.currentUser?.admin
 export const getAuthLoadingStatus = () => (state) => state.auth.authLoadingStatus
 export const getIsLoggedIn = () => (state) => state.auth.isLoggedIn
 

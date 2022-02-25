@@ -175,6 +175,10 @@ nav ul li a.active {
 
 /*  Cards  */
 
+.card.horizontal.card-main .card-image {
+    height: 210px;
+}
+
 .card .card-content p {
     font-size: 14px;
 }
@@ -207,6 +211,7 @@ nav ul li a.active {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    padding: 5px;
 }
 
 .card.horizontal .card-image {
@@ -225,7 +230,7 @@ nav ul li a.active {
     left: 50%;
     transform: translateX(-50%);
     top: 0;
-    width: 30%;
+    width: 25%;
 }
 
 .card.card-product .card-stacked {
@@ -340,4 +345,27 @@ span.badge.new {
     top: 0;
     width: 100%;
     z-index: 99;
+}
+
+
+/* Dropdown links */
+
+.dropdown-content li>a, .dropdown-content li>span {
+    font-size: 16px;
+    color: #ee6e73;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+
+/* Link */
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #ee6e73;
+    margin-right: 24px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: red;
 }

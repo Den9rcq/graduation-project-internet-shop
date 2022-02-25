@@ -1,14 +1,17 @@
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import React from "react";
+import { Router, Redirect, Route, Switch } from "react-router-dom";
 import { BasketPage, LoginPage, MainPage, ProductPage, RegistrationPage } from "./pages";
 import NavBar from "./ui/NavBar";
 import AdminPanelPage from "./pages/AdminPanelPage";
 import LogoutPage from "./pages/LogoutPage";
 import AppLoader from "./hoc/AppLoader";
-import React from "react";
+import { ToastContainer } from 'react-toastify';
+import history from "../utils/history";
+import ProtectedRoute from "./common/ProtectedRoute";
 
 function App() {
     return (
-        <Router>
+        <Router history={history}>
             <>
                 <AppLoader>
                     <NavBar />
@@ -18,11 +21,14 @@ function App() {
                         <Route path="/basket/:userId" component={BasketPage} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/registration" component={RegistrationPage} />
-                        <Route path="/admin-panel" component={AdminPanelPage} />
+                        <ProtectedRoute path="/admin-panel" component={AdminPanelPage} />
                         <Route path="/logout" component={LogoutPage} />
                         <Redirect to='/' />
                     </Switch>
                 </AppLoader>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={2000} />
             </>
         </Router>
     )

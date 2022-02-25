@@ -4,7 +4,7 @@ import React from "react";
 
 const LoginPage = () => {
     return (
-        <div className="row container mt-3">
+        <div className="row container mt-7">
             <h3 className="center-align mb-3">Log In</h3>
             <LoginForm />
             <div className="center-align">
