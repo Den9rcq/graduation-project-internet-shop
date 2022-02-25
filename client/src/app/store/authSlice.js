@@ -65,6 +65,7 @@ const authSlice = createSlice({
     reducers: {
         currentUserLogOut: state => {
             state.currentUser = null
+            state.isLoggedIn = false
         }
     },
     extraReducers: builder => {
@@ -76,6 +77,7 @@ const authSlice = createSlice({
             .addCase(signInAuth.fulfilled, (state, action) => {
                 state.currentUser = action.payload
                 state.authLoadingStatus = 'success'
+                state.isLoggedIn = true
             })
             .addCase(signInAuth.rejected, state => {
                 state.authLoadingStatus = 'error'

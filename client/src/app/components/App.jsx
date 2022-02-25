@@ -8,6 +8,7 @@ import AppLoader from "./hoc/AppLoader";
 import { ToastContainer } from 'react-toastify';
 import history from "../utils/history";
 import ProtectedRoute from "./common/ProtectedRoute";
+import BasketRoute from "./ui/BasketRoute";
 
 function App() {
     return (
@@ -18,7 +19,7 @@ function App() {
                     <Switch>
                         <Route path="/" exact component={MainPage} />
                         <Route path="/product/:productId" component={ProductPage} />
-                        <Route path="/basket/:userId" component={BasketPage} />
+                        <BasketRoute path="/basket/:userId" component={BasketPage} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/registration" component={RegistrationPage} />
                         <ProtectedRoute path="/admin-panel" component={AdminPanelPage} />
