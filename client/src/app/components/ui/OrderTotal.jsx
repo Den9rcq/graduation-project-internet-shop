@@ -19,7 +19,7 @@ const OrderTotal = () => {
                     <button
                         className="btn waves-effect waves-light btn-small blue"
                         disabled={!totalProduct}
-                        onClick={() => history.push('/')}>
+                        onClick={() => history.push('/order')}>
                         Оформить заказ
                     </button>
                 </div>

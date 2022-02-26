@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import history from "../utils/history";
 import ProtectedRoute from "./common/ProtectedRoute";
 import BasketRoute from "./ui/BasketRoute";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                         <Route path="/registration" component={RegistrationPage} />
                         <ProtectedRoute path="/admin-panel" component={AdminPanelPage} />
                         <Route path="/logout" component={LogoutPage} />
+                        <Route path="/order" component={OrderPage} />
                         <Redirect to='/' />
                     </Switch>
                 </AppLoader>
