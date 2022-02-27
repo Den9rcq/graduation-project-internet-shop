@@ -9,7 +9,7 @@ const ProductCard = () => {
     const { productId } = useParams()
     const history = useHistory()
     const product = useSelector(getProductById(productId))
-    const authUser = useSelector(getCurrentUser)
+    const authUser = useSelector(getCurrentUser())
     const { count: countOfProductInCart } = useSelector(getCartProduct(productId))
     const dispatch = useDispatch()
     const [count, setCount] = useState(countOfProductInCart || 1)
