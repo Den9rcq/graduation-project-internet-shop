@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from "@reduxjs/toolkit";
-import categoryService from "../services/category.service";
+import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit'
+import categoryService from '../services/category.service'
 
 const categoriesAdapter = createEntityAdapter({
     selectId: category => category._id
-});
+})
 const initialState = categoriesAdapter.getInitialState({
     activeCategory: { name: 'all' },
     categoriesLoadingStatus: 'loading'

@@ -1,5 +1,6 @@
-import React from 'react';
-import { useField } from "formik";
+import React from 'react'
+import { useField } from 'formik'
+import PropTypes from 'prop-types'
 
 const TextInput = ({ label, icon, ...props }) => {
     const [field, meta] = useField(props)
@@ -8,13 +9,19 @@ const TextInput = ({ label, icon, ...props }) => {
             <i className="material-icons prefix">{icon}</i>
             {!field.value && <label>{label}</label>}
             {
-                props.as === "textarea"
+                props.as === 'textarea'
                     ? <textarea {...props} {...field} />
                     : <input {...props} {...field} />
             }
             {meta.touched && meta.error ? <span className="helper-text" data-error={meta.error}>{meta.error}</span> : null}
         </>
-    );
-};
+    )
+}
 
-export default TextInput;
+TextInput.propTypes = {
+    label: PropTypes.string,
+    icon: PropTypes.string,
+    as: PropTypes.string
+}
+
+export default TextInput

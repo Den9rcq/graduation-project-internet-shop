@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { getSearchString, searchStringChanged } from "../../store/productsSlice";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getSearchString, searchStringChanged } from '../../store/productsSlice'
+import { useHistory } from 'react-router-dom'
 
 const SearchPanel = () => {
     const [value, setValue] = useState('')
@@ -32,21 +32,21 @@ const SearchPanel = () => {
     }
 
     return (
-        <div className="row mt-7">
-            <div className="input-field s10">
+        <div className='row mt-7'>
+            <div className='input-field s10'>
                 <input
-                    id="searchPanel"
-                    type="text"
+                    id='searchPanel'
+                    type='text'
                     value={value}
                     onChange={(e) => onChangeHandler(e)}
                     onKeyDown={(e) => onKeyHandler(e)}
-                    className="validate px-1" />
-                <label className="active px-1" htmlFor="searchPanel">
-                    <i className="material-icons tiny">search</i> Поиск товара (для поиска нажмите Enter)
+                    className='validate px-1' />
+                <label className='active px-1' htmlFor='searchPanel'>
+                    <i className='material-icons tiny'>search</i> Поиск товара (для поиска нажмите Enter)
                 </label>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default SearchPanel;
+export default SearchPanel

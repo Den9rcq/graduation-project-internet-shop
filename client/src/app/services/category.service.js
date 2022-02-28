@@ -1,8 +1,8 @@
-import httpService from "./http.service";
+import httpService from './http.service'
 
 const categoryEndpoint = 'category/'
 const categoryService = {
-    fetchAll: async () => {
+    fetchAll: async() => {
         const { data } = await httpService.get(categoryEndpoint)
         return data
     }

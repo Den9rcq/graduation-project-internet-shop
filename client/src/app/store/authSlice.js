@@ -1,25 +1,25 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import authService from "../services/auth.service";
-import localStorageService from "../services/localStorage.service";
-import userService from "../services/user.service";
-import { toast } from "react-toastify";
-import history from "../utils/history";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import authService from '../services/auth.service'
+import localStorageService from '../services/localStorage.service'
+import userService from '../services/user.service'
+import { toast } from 'react-toastify'
+import history from '../utils/history'
 
 const initialState = localStorageService.getAccessToken()
     ? {
         authLoadingStatus: 'loading',
         currentUser: {},
-        isLoggedIn: true,
+        isLoggedIn: true
     }
     : {
         authLoadingStatus: 'loading',
         currentUser: null,
-        isLoggedIn: false,
-    };
+        isLoggedIn: false
+    }
 
 export const signInAuth = createAsyncThunk(
     'auth/signInAuth',
-    async ({ email, password }) => {
+    async({ email, password }) => {
         try {
             const data = await authService.login({ email, password })
             localStorageService.setTokens(data)
@@ -34,7 +34,7 @@ export const signInAuth = createAsyncThunk(
 
 export const signUpAuth = createAsyncThunk(
     'auth/signUpAuth',
-    async (payload) => {
+    async(payload) => {
         try {
             const data = await authService.register(payload)
             localStorageService.setTokens(data)
@@ -53,11 +53,10 @@ export const signUpAuth = createAsyncThunk(
 
 export const isLoggedInAuth = createAsyncThunk(
     'auth/isLoggedInAuth',
-    async () => {
+    async() => {
         return await userService.getCurrentUser()
     }
 )
-
 
 const authSlice = createSlice({
     name: 'auth',
@@ -107,7 +106,6 @@ const authSlice = createSlice({
             .addCase(isLoggedInAuth.rejected, state => {
                 state.authLoadingStatus = 'error'
             })
-
     }
 })
 
@@ -116,9 +114,9 @@ const { reducer, actions } = authSlice
 export const { currentUserLogOut } = actions
 
 export const logOut = () => (dispatch) => {
-    localStorageService.removeAuthData();
-    dispatch(currentUserLogOut());
-};
+    localStorageService.removeAuthData()
+    dispatch(currentUserLogOut())
+}
 
 export const getCurrentUser = () => (state) => state.auth.currentUser
 export const getAdmin = () => (state) => state.auth.currentUser?.admin

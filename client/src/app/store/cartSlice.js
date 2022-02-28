@@ -1,11 +1,11 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
-import cartService from "../services/cart.service";
-import { toast } from "react-toastify";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import cartService from '../services/cart.service'
+import { toast } from 'react-toastify'
 
 const initialState = {
     order: [],
     cartLoadingStatus: 'loading',
-    totalProduct: 0,
+    totalProduct: 0
 }
 
 export const fetchCart = createAsyncThunk(
@@ -29,7 +29,6 @@ export const removeProductToCart = createAsyncThunk(
     'cart/removeProductToCart',
     (id) => cartService.removeProductToCart(id)
 )
-
 
 const cartSlice = createSlice({
     name: 'cart',

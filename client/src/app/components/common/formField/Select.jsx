@@ -1,7 +1,8 @@
-import React from 'react';
-import { useField } from "formik";
+import React from 'react'
+import { useField } from 'formik'
+import PropTypes from 'prop-types'
 
-const Select = ({label, children, ...props}) => {
+const Select = ({ label, children, ...props }) => {
     const [field, meta] = useField(props)
     return (
         <>
@@ -11,7 +12,16 @@ const Select = ({label, children, ...props}) => {
             </select>
             {meta.touched && meta.error && <span className="helper-text" data-error={meta.error}/>}
         </>
-    );
-};
+    )
+}
 
-export default Select;
+Select.propTypes = {
+    label: PropTypes.string,
+    name: PropTypes.string,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
+}
+
+export default Select

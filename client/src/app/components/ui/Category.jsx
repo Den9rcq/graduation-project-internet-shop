@@ -1,6 +1,7 @@
-import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { activeCategoryChanged, getCurrentCategory } from "../../store/categoriesSlice";
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { activeCategoryChanged, getCurrentCategory } from '../../store/categoriesSlice'
+import PropTypes from 'prop-types'
 
 const Category = ({ label, name, _id }) => {
     const currentCategory = useSelector(getCurrentCategory())
@@ -17,7 +18,13 @@ const Category = ({ label, name, _id }) => {
             onClick={() => onActiveCategory({ _id, name })}>
             {label}
         </li>
-    );
-};
+    )
+}
 
-export default Category;
+Category.propTypes = {
+    label: PropTypes.string,
+    name: PropTypes.string,
+    _id: PropTypes.string
+}
+
+export default Category

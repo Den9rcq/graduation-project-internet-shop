@@ -1,7 +1,7 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
-import productService from "../services/product.service";
-import { getCurrentCategory } from "./categoriesSlice";
-import { toast } from "react-toastify";
+import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit'
+import productService from '../services/product.service'
+import { getCurrentCategory } from './categoriesSlice'
+import { toast } from 'react-toastify'
 
 const productsAdapter = createEntityAdapter({
     selectId: product => product._id,
@@ -40,8 +40,6 @@ export const removeProduct = createAsyncThunk(
         return productService.delete(id)
     }
 )
-
-
 
 const productsSlice = createSlice({
     name: 'products',

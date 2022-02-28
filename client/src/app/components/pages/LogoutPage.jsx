@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from "react-redux";
-import { logOut } from "../../store/authSlice";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { logOut } from '../../store/authSlice'
+import { useHistory } from 'react-router-dom'
 
 const LogoutPage = () => {
     const dispatch = useDispatch()
@@ -9,7 +9,7 @@ const LogoutPage = () => {
 
     useEffect(() => {
         dispatch(logOut())
-        history.push("/");
+        history.push('/')
 
         // eslint-disable-next-line
     },[])
@@ -18,7 +18,7 @@ const LogoutPage = () => {
         <div>
             <h2>Loading</h2>
         </div>
-    );
-};
+    )
+}
 
-export default LogoutPage;
+export default LogoutPage

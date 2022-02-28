@@ -1,7 +1,13 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Pagination = ({ page, prevPage, nextPage, setPage, totalPages }) => {
-
+const Pagination = ({
+    page,
+    prevPage,
+    nextPage,
+    setPage,
+    totalPages
+}) => {
     if (totalPages <= 1) {
         return null
     }
@@ -13,7 +19,7 @@ const Pagination = ({ page, prevPage, nextPage, setPage, totalPages }) => {
             </li>
             {[...Array(totalPages).keys()].map((el) => (
                 <li key={el}
-                    className={`waves-effect ${page === el + 1 ? "active" : ""}`}>
+                    className={`waves-effect ${page === el + 1 ? 'active' : ''}`}>
                     <a
                         onClick={() => setPage(el + 1)}
                         key={el}
@@ -26,7 +32,15 @@ const Pagination = ({ page, prevPage, nextPage, setPage, totalPages }) => {
                 <a onClick={() => nextPage()}><i className="material-icons">chevron_right</i></a>
             </li>
         </ul>
-    );
-};
+    )
+}
 
-export default Pagination;
+Pagination.propTypes = {
+    page: PropTypes.number,
+    prevPage: PropTypes.number,
+    nextPage: PropTypes.number,
+    setPage: PropTypes.number,
+    totalPages: PropTypes.number
+}
+
+export default Pagination
